@@ -1,0 +1,87 @@
+<?php include "../includes/header.php" ?>
+<?php require_once("connectdb.php"); ?>
+<div class="sign-in">
+	<div class="header">
+		<h1>Đăng nhập</h1>
+	</div>
+	<form action="login.php" method="post">
+		<div class="form-group row">
+			<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+			<div class="col-sm-10">
+				<input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
+			</div>
+		</div>
+		<div class="form-group row">
+			<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
+			</div>
+		</div>
+		<fieldset class="form-group">
+
+		</fieldset>
+		<div class="form-group row">
+			<div class="col-sm-2">Remember password</div>
+			<div class="col-sm-10">
+				<div class="form-check">
+					<input class="form-check-input" type="checkbox" id="gridCheck1">
+					<label class="form-check-label" for="gridCheck1">
+						Remember
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group row">
+			<div class="col-sm-10">
+				<button type="submit" name="btn_submit" class="btn btn-primary">Login</button>
+			</div>
+		</div>
+	</form>
+</div>
+<?php include "../includes/footer.php" ?>
+<?php 
+if (isset($_POST["btn_submit"])) {
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+	$email = strip_tags($email);
+	$email = addslashes($email);
+	$password = strip_tags($password);
+	$password = addslashes($password);
+	if ($email == "" || $password =="") {
+		echo '<script language="javascript">';
+		echo 'alert("bạn vui lòng nhập đầy đủ thông tin")';
+		echo '</script>';
+	}else{
+		$sql ="select * from users where email='$email' and password='$password'";
+		$query = mysqli_query($connect,$sql);
+		$num_rows = mysqli_num_rows($query);
+		if ($num_rows==0) {
+			echo '<script language="javascript">';
+			echo 'alert("Tài khoản mật khẩu không đúng yêu cầu nhập lại")';
+			echo '</script>';
+		}else{
+			while ( $data = mysqli_fetch_array($query) ){
+				$_SESSION["user_id"] = $data["user_id"];
+				$_SESSION["email"] = $data["email"];
+				$_SESSION["username"] = $data["username"];
+				$_SESSION["is_block"] = $data["is_block"];
+				$_SESSION["permision"] = $data["permision"];
+			}
+			if ($_SESSION["is_block"]=="1") {
+				echo '<script language="javascript">';
+				echo 'alert("Tài khoản của bạn đã bị khóa vui lòng liên hệ nhà quản trị để dược cấp lại")';
+				echo '</script>';
+			}else{
+				echo '<script language="javascript">';
+				echo 'alert("Đăng nhập thành công")';
+				echo '</script>';
+				if ($_SESSION['permision'] == "1") {
+					$url="admin.php";
+				}
+				else{ $url="index.php";}
+				echo "<meta http-equiv='refresh' content='0;url=$url' />";
+			}
+		}
+	}
+}
+?>

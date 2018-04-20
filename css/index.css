@@ -1,0 +1,349 @@
+body{
+	position: relative;
+}
+#header{
+
+}
+.container{
+	background: ;
+	display: flex;
+	justify-content: center;
+}
+.nav-link.dangki{
+	margin-left: 500px;
+}
+
+@media (min-width: 992px)
+{
+	.container {
+		max-width: 100vw !important; 
+	}
+	.container {
+		background-color: white;
+		width: 100vw !important;
+		padding: 150px !important;
+		margin-right: 0 !important;
+		margin-left: 0 !important;
+	}
+}
+.carousel-inner{
+
+}
+.head-title {
+	width: 100%;
+	height: 100vh;
+	font-size: 70px;
+	color: #fff;
+	font-family: Volkhov, serif;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.background-deep{
+	height: 600px;
+	width: 100vw;
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	background-image: url("../image/img3.jpg");
+	background-blend-mode: overlay;
+	background-color: rgba(0,0,0,0.5);
+}
+.background-deep.bansung{
+	background-image: url("../image/img1.jpg");
+}
+.background-deep.thethao{
+	background-image: url("../image/img7.jpg");
+}
+.background-deep.doikhang{
+	background-image: url("../image/img8.jpg");
+}
+.background-deep.nhapvai{
+	background-image: url("../image/img6.jpg");
+}
+.background-deep.kinhdi{
+	background-image: url("../image/img5.jpg");
+}
+.background-deep.admin{
+	background-image: url("../image/admin.jpg");
+	background-size: cover;
+}
+/* intro-------------------------------------------*/
+.intro{
+	width: 100%;
+	height:400px ;
+	padding: 50px;
+	background-color: black;
+	margin-bottom: 50px;
+	display: inline-block;
+	vertical-align: middle;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+	background-image: url("../image/intro.jpg");
+	-webkit-transition-property: color;
+	transition-property: color;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+}
+.intro:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #e1e1e1;
+	-webkit-transform: scaleY(1);
+	transform: scaleY(1);
+	-webkit-transform-origin: 50%;
+	transform-origin: 50%;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+}
+.intro:hover, .intro:focus, .intro:active {
+	color: white;
+}
+.intro:hover:before, .intro:focus:before, .intro:active:before {
+	-webkit-transform: scaleY(0);
+	transform: scaleY(0);
+}
+/* intro-------------------------------------------*/
+#list-disk{
+	margin: 50px 100px 0px 100px;
+}
+.card{
+	margin-top:25px;
+	transition: 1s
+}
+.card-view{
+	height: 350px;
+	background-size: contain;
+	background-image: url("../image/img6.jpg");
+	background-blend-mode: overlay;
+	background-color: #1a1a1a;
+	display: flex;
+	padding: 30px;
+}
+
+.card-view-2{
+	height: 350px;
+	background-size: contain;
+	background-image: url("../image/img5.jpg");
+	background-blend-mode: overlay;
+	background-color: #1a1a1a;
+	display: flex;
+	padding: 30px;
+}
+.card:hover{
+	transform: scale(1.1,1.1);
+	/*opacity: 0.6;*/
+	/*border-style: dotted;*/
+	border-width: 5px;
+	border-color: #15d9e2;
+}
+.space60 {
+	line-height: 60px;
+}
+.chimuc{
+	margin-bottom: 1em;
+	text-align: center;
+	font-family: serif;
+	font-family: 'Poiret One', cursive;
+}
+/* class introduction --------------*/
+.introduction{
+	margin: 10px;
+	height: 80%;
+	flex-basis: 45%;
+	text-align: left;
+	padding: 5px;
+}
+.avatar{
+	border-width: 5px;
+	border-color: blue;
+	flex-basis: 60%;
+}
+.avatar.dist-1{
+	background-size: contain;
+	background-image: url("../image/img6.jpg");
+}
+.avatar.dist-2{
+	background-size: contain;
+	background-image: url("../image/img5.jpg");
+}
+.img-title{
+	font-size: 2.5vw;
+	color: white;
+	font-family: 'Poiret One', cursive;
+}
+.descripes{
+	font-size: 1.5vw;
+	color: white;
+	font-family: 'Poiret One', cursive;
+}
+/* class introduction --------------*/
+/*hover-effect -------------*/
+.hover-effect{
+	/*display: inline-block;*/
+	vertical-align: middle;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 100px #1b1e21;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-moz-osx-font-smoothing: grayscale;
+	position: relative;
+}
+.hover-effect:before {
+	content: '';
+	position: absolute;
+	border: #e1e1e1 solid 4px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: top, right, bottom, left;
+	transition-property: top, right, bottom, left;
+}
+.hover-effect:hover:before, .hover-effect:focus:before, .hover-effect:active:before {
+	top: -8px;
+	right: -8px;
+	bottom: -8px;
+	left: -8px;
+}
+/*===========Login */
+.sign-in{
+	margin-top: 100px;
+	margin-left: 200px;
+	width: 960px;
+	height: 550px;
+}
+/*Bắn súng page=============*/
+
+.content{
+	width: 100vw;
+	height: 900px;
+	background-color: white;
+}
+/* Product page =====================*/
+.product{
+	width: 100%;
+	height: 700px;
+	padding: 20px;
+}
+.description{
+	width: 100%;
+	height: 900px;
+	display: flex;
+	padding: 100px;
+}
+.text-description{
+	margin-left: 100px;
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	height: 100%;
+}
+.text-name{
+	width: 100%;
+	height: 30%;
+}
+.name{
+	font-size: 45px;
+	color: black;
+	font-family: sans-serif, serif;
+}
+.name.number-seller{
+	font-size: 25px;
+}
+.name.img{
+	color: white;
+	font-family: cursive;
+	margin-top: 150px;
+}
+.img-product{
+	padding: 50px;
+	margin-right: 60px;
+	margin-left: 70px;
+	width: 40%;
+	height: 80%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-image: url("../image/product1.jpg");
+	background-blend-mode: overlay;
+	background-color: rgba(0,0,0,0.5);
+	background-size: contain;
+}
+.image{
+	width: 350px;
+	height: 180px;
+	background-image: url("../image/product1.jpg");
+	background-size: cover;
+}
+.buy{
+	width: 100%;
+	height: 10%;
+}
+.seller{
+	display: flex;
+	flex-direction: column;
+	margin-top: 50px;
+	width: 100%;
+	height: 60%;
+}
+.seller-info{
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 80%;
+}
+.person{
+	margin: 10px;
+	padding: 10px;
+	width: 100%;
+	height: 100px;
+}
+.second{
+	display: flex;
+	flex-direction: column;
+}
+.rent{
+	margin-left: 25px;
+	display: flex;
+}
+.buy{
+	margin-left: 25px;
+	display: flex;
+}
+/* Hiệu ứng mua hàng ==================================*/
+.img-fly{
+	position: absolute;
+	width: 50px;
+	height: 30px;
+	object-fit: cover;
+	border:2px solid gray;
+	z-index: 45456;
+	transition: all 1s ease;
+	animation: myAnimation 1.2s;
+}
+@keyframes myAnimation {
+	0% { transform: scale(5); }
+	20% { transform: scale(1.2); }
+	50% { transform: scale(1.5); }
+	70% { transform: scale(1); }
+	100% { transform: scale(0.12); }
+}
