@@ -1,7 +1,6 @@
 <?php include "../includes/header.php" ?>
 
 <div class="background-deep">
-	
 </div>
 <div class = "head-title">
 	<p>Welcome to PS4 shop</p>
@@ -52,14 +51,12 @@
 							?>
 							<div class="col-sm-3">
 								<div class="card">
-									<a href="#"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 									<div class="card-body">
 										<h5 class="card-title"><?=$row["product_name"]?></h5>
-										<p class="card-text"><?=$row["price_buy"]?></p>
-										<form method="POST">
-											<button type="submit" class="btn btn-outline-warning btn-buy-now" name=<?php echo "buy".$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+										<p class="card-text"><?=number_format($row["price_buy"])?></p>
+											<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
 											</button>
-										</form>
 										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 									</div>
 								</div>
@@ -116,14 +113,12 @@
 							?>
 							<div class="col-sm-3">
 								<div class="card">
-									<a href="#"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 									<div class="card-body">
 										<h5 class="card-title"><?=$row["product_name"]?></h5>
-										<p class="card-text"><?=$row["price_buy"]?></p>
-										<form method="get">
-											<button type="submit" class="btn btn-outline-warning btn-buy-now" name=<?php echo "buy".$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+										<p class="card-text"><?=number_format($row["price_buy"])?></p>
+											<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
 											</button>
-										</form>
 										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 									</div>
 								</div>
@@ -164,27 +159,12 @@
 						?>
 						<div class="col-sm-3">
 							<div class="card">
-								<a href="#"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+								<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 								<div class="card-body">
 									<h5 class="card-title"><?=$row["product_name"]?></h5>
-									<p class="card-text"><?=$row["price_buy"]?></p>
-									<form method="get">
-									<button type="submit" class="btn btn-outline-warning btn-buy-now" name=<?php echo "buy".$row["product_id"]?> onclick="loadAjax()"><i class="fa fa-shopping-cart"></i>
+									<p class="card-text"><?=number_format($row["price_buy"])?></p>
+									<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
 									</button>
-									</form>
-									<script>
-										function loadAjax(){
-											$.post('index.php', {"buy".$row["product_id"]: $('.btn-buy-now').val()}, function(result) {
-												alert(result);
-											},'text'
-											);
-										}
-									</script>
-									<?php
-									if (isset($_POST["buy".$row["product_id"]])) {
-										echo $_POST["buy".$row["product_id"]];
-									}
-									?>
 									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 								</div>
 							</div>

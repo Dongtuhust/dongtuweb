@@ -72,6 +72,7 @@ if (isset($_POST["btn_submit"])) {
 				echo 'alert("Tài khoản của bạn đã bị khóa vui lòng liên hệ nhà quản trị để dược cấp lại")';
 				echo '</script>';
 			}else{
+				unset($_SESSION['cart']);
 				echo '<script language="javascript">';
 				echo 'alert("Đăng nhập thành công")';
 				echo '</script>';

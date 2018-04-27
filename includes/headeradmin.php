@@ -9,7 +9,9 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/ >
+	<script src="../js/style.js"></script>
+	<script src="../js/jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
@@ -40,16 +42,16 @@ session_start();
 					<?php
 					if (isset($_SESSION['user_id'])){
 						?>
-							<a href="#"><button type="button" class="btn btn-outline-dark">Tài khoản: <?php echo $_SESSION['username']; ?></button></a>
-							<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
-							<?php
-						} else {
-							?>
-							<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
-							<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
-							<?php
-						}
+						<a href="#"><button type="button" class="btn btn-outline-dark">Tài khoản: <?php echo $_SESSION['username']; ?></button></a>
+						<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
+						<?php
+					} else {
 						?>
+						<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
+						<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
+						<?php
+					}
+					?>
 					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 					</form>

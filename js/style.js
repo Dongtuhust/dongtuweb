@@ -17,6 +17,19 @@ $(window).scroll(function(){
 });
 
 $(document).on('click', '.btn-buy-now', function() {
+    var id = $(this).attr('data-product');
+    $.ajax({
+        url : "cart.php", // gửi ajax đến file cart.php
+        type : "post", // chọn phương thức gửi là post
+        dataType:"text", // dữ liệu trả về dạng text
+        data : {id : id
+       },
+       success : function (result){
+            // Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
+            // đó vào thẻ div có id = result
+            $('#result').html(result);
+        }
+    });
     if ($(this).hasClass('disable')) {return false;}
     $(document).find('.btn-buy-now').addClass('disable');
     var parent = $(this).parents('.card');
@@ -43,5 +56,5 @@ $(document).on('click', '.btn-buy-now', function() {
             $(document).find('.btn-buy-now').removeClass('disable');
         },1000);
     },500);
-    return false;
+
 });
