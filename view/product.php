@@ -1,4 +1,4 @@
-<div class="hover-effect" style="height: 50px"
+<div class="hover-effect" style="height: 50px">
 <h2 style="text-align: center;">Quản lý sản phẩm do nhà phân phối cung cấp</h2>
 </div>
 <table class="table table-hover">

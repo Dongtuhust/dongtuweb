@@ -1,42 +1,47 @@
 <?php include "../includes/header.php" ?>
 <?php require_once("connectdb.php"); ?>
 <div class="sign-in">
-	<div class="header">
-		<h1>Đăng nhập</h1>
-	</div>
-	<form action="login.php" method="post">
-		<div class="form-group row">
-			<label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-			<div class="col-sm-10">
-				<input type="email" class="form-control" name="email" id="inputEmail3" placeholder="Email">
-			</div>
-		</div>
-		<div class="form-group row">
-			<label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-			<div class="col-sm-10">
-				<input type="password" class="form-control" name="password" id="inputPassword3" placeholder="Password">
-			</div>
-		</div>
-		<fieldset class="form-group">
-
-		</fieldset>
-		<div class="form-group row">
-			<div class="col-sm-2">Remember password</div>
-			<div class="col-sm-10">
-				<div class="form-check">
-					<input class="form-check-input" type="checkbox" id="gridCheck1">
-					<label class="form-check-label" for="gridCheck1">
-						Remember
-					</label>
+	<div class="row">
+		<div class="col-sm-8">
+			<h1>Đăng nhập</h1>
+			<form action="login.php" method="post">
+				<div class="form-group row">
+					<label  class="col-sm-2 col-form-label">Email</label>
+					<div class="col-sm-10">
+						<input type="email" class="form-control" name="email" placeholder="Email" required="">
+					</div>
 				</div>
-			</div>
+				<div class="form-group row">
+					<label  class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="password"  placeholder="Password" required="">
+					</div>
+				</div>
+				<fieldset class="form-group">
+
+				</fieldset>
+				<div class="form-group row">
+					<div class="col-sm-2">Remember password</div>
+					<div class="col-sm-10">
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" ">
+							<label class="form-check-label" >
+								Remember
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-sm-10">
+						<button type="submit" name="btn_submit" class="btn btn-primary">Login</button>
+					</div>
+				</div>
+			</form>
 		</div>
-		<div class="form-group row">
-			<div class="col-sm-10">
-				<button type="submit" name="btn_submit" class="btn btn-primary">Login</button>
-			</div>
+		<div class="col-sm-4">
+			<img src="../image/ps4.jpg" alt="">
 		</div>
-	</form>
+	</div>
 </div>
 <?php include "../includes/footer.php" ?>
 <?php 

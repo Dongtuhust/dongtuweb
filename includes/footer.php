@@ -1,4 +1,3 @@
-
 <script src="../js/style.js"></script>
 <script src="../js/scrollmooth.js"></script>
 <!-- #content-->

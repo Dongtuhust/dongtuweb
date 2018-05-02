@@ -15,13 +15,12 @@ session_start();
 	<script src="../js/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="../js/style.js"></script>
-	<script src="../js/cart.js"></script>
 </head>
 <body>
 	<!--header-->
 	<div id="header">
 		<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-			<a class="navbar-brand" href="#" style="padding-bottom: 10px;">Dongtu</a>
+			<a class="navbar-brand" href="#" style="padding-bottom: 10px;">Ps4 Store</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -31,8 +30,8 @@ session_start();
 					<li class="nav-item active">
 						<a class="nav-link" href="index.php">Trang chủ<span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Đăng bán</a>
+					<li class="nav-item active">
+						<a class="nav-link" href="user_sell.php">Đĩa cũ</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -57,34 +56,38 @@ session_start();
 							<a href="logout.php">Đăng suất</a> -->
 							<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
 								<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-								<span style="margin-right: 2px;">
-									<?php if (isset($_SESSION['cart'])) {
-										echo count($_SESSION['cart'])." Item";
-									}
-									?>
-								</span>
-								<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+								<span style="margin-right: 2px;" id="count-item" data-count="<?php
+								if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart']);
+								}else echo 0;
+								?>">
+								<?php if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart'])." Item";
+								}
+								?>
 							</span>
-							<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
-							<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
-							<?php
-						} else {
-							?>
-							<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
-								<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-								<span style="margin-right: 2px;">
-									<?php if (isset($_SESSION['cart'])) {
-										echo count($_SESSION['cart'])." Item";
-									}
-									?>
-								</span>
-								<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
-							</span>
-							<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
-							<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
-							<?php
-						}
+							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+						</span>
+						<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
+						<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
+						<?php
+					} else {
 						?>
+						<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
+							<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
+							<span style="margin-right: 2px;">
+								<?php if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart'])." Item";
+								}
+								?>
+							</span>
+							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+						</span>
+						<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
+						<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
+						<?php
+					}
+					?>
 					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 					</form>
@@ -159,8 +162,8 @@ session_start();
 							?>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-primary">Thanh toán</button>
-							<button type="button" class="btn btn-success reset" >Reset</button>
+							<a href="order.php"><button type="button" class="btn btn-primary">Thanh toán</button></a>
+							<button type="button" class="btn btn-success reset" >Refresh</button>
 						</div>
 					</div>
 				</div>

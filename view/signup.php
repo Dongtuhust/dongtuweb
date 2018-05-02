@@ -1,53 +1,58 @@
 <?php include "../includes/header.php" ?>
 <?php require_once("connectdb.php"); ?>
 <div class="sign-in">
-	<div class="header">
-		<h1>Đăng ký</h1>
-	</div>
-	<form action="signup.php" method="post">
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label for="inputEmail4">Email</label>
-				<input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
-			</div>
-			<div class="form-group col-md-6">
-				<label for="inputAddress">Tên đăng nhập</label>
-				<input type="text" class="form-control" name="username" id="inputAddress" placeholder="username">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1>Đăng ký</h1>
+			<form action="signup.php" method="post">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputEmail4">Email</label>
+						<input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" required="">
+					</div>
+					<div class="form-group col-md-6">
+						<label for="inputAddress">Tên đăng nhập</label>
+						<input type="text" class="form-control" name="username" id="inputAddress" placeholder="username" required="">
 
-			</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword4">Mật khẩu</label>
+					<input type="password" class="form-control" name="password1" id="inputPassword4" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<label for="inputPassword4">Xác nhận mật khẩu</label>
+					<input type="password" class="form-control" name="password2" id="inputPassword4" placeholder="Password">
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputCity">Thành phố</label>
+						<input type="text" class="form-control" name="city" id="inputCity">
+					</div>
+					<div class="form-group col-md-2">
+						<label for="inputZip">Số điện thoại</label>
+						<input type="text" class="form-control" name="phone" id="inputZip">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputZip">Adminpass</label>
+						<input type="text" class="form-control" name="passAdmin" id="inputZip" placeholder="Không bắt buộc">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<label class="form-check-label" for="gridCheck">
+							Chấp nhận điều khoản
+						</label>
+					</div>
+				</div>
+				<button type="submit" name="btn_submit" class="btn btn-primary">Đăng ký</button>
+			</form>
 		</div>
-		<div class="form-group">
-			<label for="inputPassword4">Password</label>
-			<input type="password" class="form-control" name="password1" id="inputPassword4" placeholder="Password">
+		<div class="col-sm-4">
+			<img src="../image/ps4.jpg" alt="">
 		</div>
-		<div class="form-group">
-			<label for="inputPassword4">Xác nhận Password</label>
-			<input type="password" class="form-control" name="password2" id="inputPassword4" placeholder="Password">
-		</div>
-		<div class="form-row">
-			<div class="form-group col-md-6">
-				<label for="inputCity">Thành phố</label>
-				<input type="text" class="form-control" name="city" id="inputCity">
-			</div>
-			<div class="form-group col-md-2">
-				<label for="inputZip">Số điện thoại</label>
-				<input type="text" class="form-control" name="phone" id="inputZip">
-			</div>
-			<div class="form-group col-md-4">
-				<label for="inputZip">passAdmin</label>
-				<input type="text" class="form-control" name="passAdmin" id="inputZip" placeholder="Không bắt buộc">
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="form-check">
-				<input class="form-check-input" type="checkbox" id="gridCheck">
-				<label class="form-check-label" for="gridCheck">
-					Check me out
-				</label>
-			</div>
-		</div>
-		<button type="submit" name="btn_submit" class="btn btn-primary">Sign in</button>
-	</form>
+	</div>
 </div>
 <?php include "../includes/footer.php" ?>
 <?php 

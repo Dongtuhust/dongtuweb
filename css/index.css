@@ -260,9 +260,9 @@ body{
 .description{
 	display: block;
 	width: 1200px;
-	height: 900px;
+	height: 80%;
 	display: flex;
-	padding: 100px;
+	padding: 100px 100px 0px 100px;
 }
 .text-description{
 	margin-left: 100px;
@@ -286,7 +286,7 @@ body{
 .img-product{
 	padding: 5px;
 	width: 40%;
-	height: 60%;
+	height: 97%;
 	display: block;
 	flex-direction: column;
 	justify-content: center;
@@ -317,6 +317,13 @@ body{
 	height: 110px;
 	overflow: auto;
 }
+.list-img-product{
+	margin-right: 5px;
+	background-size : cover;
+	width: 30%;height: 100%;
+	cursor: pointer;"
+	opacity: 0.6;
+}
 /* Hiệu ứng mua hàng ==================================*/
 .img-fly{
 	position: absolute;
@@ -342,4 +349,101 @@ body{
 /* admin page =========================*/
 .modal-body p{
 	color: blue;font-weight: bold;
+}
+/* order page ==========================*/
+.form-checkout label{
+	color: #a6691e;
+	font-family: Rubik;
+	font-size: 17px;
+}
+.form-block{
+	display: block;
+}
+.my-order {
+    border: 1px solid #e8e8e8;
+    padding-bottom: 35px;
+}
+.my-order-head {
+    height: 55px;
+    background-color: #f8f8f8;
+    padding: 0 40px;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+}
+.my-order-head h5 {
+font-size:24px;
+color:#484747;
+line-height:55px
+}
+.my-order-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f8f8f8;
+}
+.my-order-body {
+    padding: 30px 40px;
+}
+.my-order-body h5 {
+margin-top:-10px
+}
+
+.my-order-info {
+display:block;
+margin-top:-5px;
+margin-bottom:-2px
+}
+.info-product {
+
+display:block;
+font-size: 15px;
+opacity: 0.7;
+margin-left: 15px;
+}
+.payment_methods {
+text-align:left;
+padding:1em;
+margin:0;
+list-style:none outside
+}
+.payment_methods li {
+	font-family: 'Poiret One';
+    margin-bottom: 10px;
+}
+.order-item {
+    margin-left: 2em;
+    height: 3em;
+    padding: 0.2em 1em 0.2em 2.25em;
+    font-size: 2.3em;
+    font-weight: bold;
+    font-family: "Arial";
+    text-transform: uppercase;
+    color: #696666;
+    background: url(https://i.imgur.com/Th606mh.png) no-repeat scroll 0.75em 0.07em transparent;
+    background-size: 54px 204px;
+    border-radius: 2em;
+    border: 0.15em solid #F9C23C;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+.order-item:hover {
+    color: #fff;
+    background-color: #EAA502;
+    border-color: #EAA502;
+    background-position: 0.75em bottom;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.order-item:focus {
+    background-position: 2em -4em;
+    -webkit-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.pay-way.ship{
+	margin-left:25px;
+	display: block;
+}
+.pay-way.credit{
+	margin-left:25px;
+	display: none;
 }

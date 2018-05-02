@@ -11,8 +11,9 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/ >
 	<script src="../js/style.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="../js/jquery-3.3.1.min.js"></script>
-
+	<script src="../js/style.js"></script>
 </head>
 <body>
 	<!--header-->
@@ -32,7 +33,7 @@ session_start();
 						<a class="nav-link" href="addproduct.php">Thêm sản phẩm</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">QL đơn hàng</a>
+						<a class="nav-link" href="admin_order.php">QL đơn hàng</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="user.php">QL tài khoản</a>

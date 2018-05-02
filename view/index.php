@@ -54,138 +54,149 @@
 									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 									<div class="card-body">
 										<h5 class="card-title"><?=$row["product_name"]?></h5>
-										<p class="card-text"><?=number_format($row["price_buy"])?></p>
-											<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
-											</button>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
+										<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
+										<button data-id="
+										<?php
+										if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+										?>"
+										type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+									</button>
+									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
+									</p>
 								</div>
 							</div>
-							<?php
-						}
+						</div>
+						<?php
 					}
-				}else{
-					?>
-					<tr valign="top">
-						<td >&nbsp;</td>
-						<td ><b><font face="Arial" color="#FF0000">
-						Khong tim thay thong tin !</font></b></td>
-					</tr>
-					<?php
 				}
+			}else{
 				?>
+				<tr valign="top">
+					<td >&nbsp;</td>
+					<td ><b><font face="Arial" color="#FF0000">
+					Khong tim thay thong tin !</font></b></td>
+				</tr>
+				<?php
+			}
+			?>
 
 
-			</div>
-
-			<div class="space60">&nbsp;</div>
-
-		</div> <!-- .hover-effect Đĩa mới-->
+		</div>
 
 		<div class="space60">&nbsp;</div>
-		<h2 class="chimuc">Đĩa đang hot</h2>
-		<!-- list bán chạy xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-		<div class="hover-effect">
-			<div class="row">
-				<div class="col-sm-12">
-					<div class="card-view-2">
-						<div class="avatar dist-2">
-						</div>
-						<div class="introduction">
-							<p class="img-title">Resident Evil 7</p>
-							<p class="descripes">Tiếp theo Resident Evil 5 và Resident Evil 6 , Resident Evil 7 sẽ trở lại với rễ kinh dị sống còn của franchise, với sự nhấn mạnh về thăm dò</p>
-						</div>
+
+	</div> <!-- .hover-effect Đĩa mới-->
+
+	<div class="space60">&nbsp;</div>
+	<h2 class="chimuc">Đĩa đang hot</h2>
+	<!-- list bán chạy xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+	<div class="hover-effect">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card-view-2">
+					<div class="avatar dist-2">
+					</div>
+					<div class="introduction">
+						<p class="img-title">Resident Evil 7</p>
+						<p class="descripes">Tiếp theo Resident Evil 5 và Resident Evil 6 , Resident Evil 7 sẽ trở lại với rễ kinh dị sống còn của franchise, với sự nhấn mạnh về thăm dò</p>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<?php require_once("connectdb.php");
-				$sql = "SELECT * FROM product";
-				$result = mysqli_query($connect,$sql);
-				$totalRows = mysqli_num_rows($result);
-				if($totalRows>0){
-					$i=0;
+		</div>
+		<div class="row">
+			<?php require_once("connectdb.php");
+			$sql = "SELECT * FROM product";
+			$result = mysqli_query($connect,$sql);
+			$totalRows = mysqli_num_rows($result);
+			if($totalRows>0){
+				$i=0;
 			// Sử dụng vòng lặp để duyệt kết quả truy vấn
-					while ($row = mysqli_fetch_array ($result))
-					{
-						$i+=1;
-						if ($row["product_status"]=="Hot") {
-							?>
-							<div class="col-sm-3">
-								<div class="card">
-									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
-									<div class="card-body">
-										<h5 class="card-title"><?=$row["product_name"]?></h5>
-										<p class="card-text"><?=number_format($row["price_buy"])?></p>
-											<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
-											</button>
-										<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-									</div>
-								</div>
-							</div>
-							<?php
-						}
-					}
-				}else{
-					?>
-					<tr valign="top">
-						<td >&nbsp;</td>
-						<td ><b><font face="Arial" color="#FF0000">
-						Khong tim thay thong tin !</font></b></td>
-					</tr>
-					<?php
-				}
-				?>
-			</div>
-
-
-		</div> <!-- .hover-effect Đĩa bán chạy-->
-
-		<div class="space60">&nbsp;</div>
-		<!-- list all xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-		<div class="hover-effect">
-			<h2 class="chimuc">Tất cả</h2>
-			<div class="row">
-				<?php require_once("connectdb.php");
-				$sql = "SELECT * FROM product";
-				$result = mysqli_query($connect,$sql);
-				$totalRows = mysqli_num_rows($result);
-				if($totalRows>0){
-					$i=0;
-			// Sử dụng vòng lặp để duyệt kết quả truy vấn
-					while ($row = mysqli_fetch_array ($result))
-					{
-						$i+=1;
+				while ($row = mysqli_fetch_array ($result))
+				{
+					$i+=1;
+					if ($row["product_status"]=="Hot") {
 						?>
 						<div class="col-sm-3">
 							<div class="card">
 								<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 								<div class="card-body">
 									<h5 class="card-title"><?=$row["product_name"]?></h5>
-									<p class="card-text"><?=number_format($row["price_buy"])?></p>
-									<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
-									</button>
-									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-								</div>
+									<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
+									<button data-id="<?php
+									if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+									?>"
+									type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+								</button>
+								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 							</div>
 						</div>
-						<?php
-					}
-				}else{
-					?>
-					<tr valign="top">
-						<td >&nbsp;</td>
-						<td ><b><font face="Arial" color="#FF0000">
-						Khong tim thay thong tin !</font></b></td>
-					</tr>
+					</div>
 					<?php
 				}
+			}
+		}else{
+			?>
+			<tr valign="top">
+				<td >&nbsp;</td>
+				<td ><b><font face="Arial" color="#FF0000">
+				Khong tim thay thong tin !</font></b></td>
+			</tr>
+			<?php
+		}
+		?>
+	</div>
+
+
+</div> <!-- .hover-effect Đĩa bán chạy-->
+
+<div class="space60">&nbsp;</div>
+<!-- list all xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+<div class="hover-effect">
+	<h2 class="chimuc">Tất cả</h2>
+	<div class="row">
+		<?php require_once("connectdb.php");
+		$sql = "SELECT * FROM product";
+		$result = mysqli_query($connect,$sql);
+		$totalRows = mysqli_num_rows($result);
+		if($totalRows>0){
+			$i=0;
+			// Sử dụng vòng lặp để duyệt kết quả truy vấn
+			while ($row = mysqli_fetch_array ($result))
+			{
+				$i+=1;
 				?>
+				<div class="col-sm-3">
+					<div class="card">
+						<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+						<div class="card-body">
+							<h5 class="card-title"><?=$row["product_name"]?></h5>
+							<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
+							<button data-id="<?php
+							if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+							?>"
+							type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+						</button>
+						<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+					</div>
+				</div>
 			</div>
+			<?php
+		}
+	}else{
+		?>
+		<tr valign="top">
+			<td >&nbsp;</td>
+			<td ><b><font face="Arial" color="#FF0000">
+			Khong tim thay thong tin !</font></b></td>
+		</tr>
+		<?php
+	}
+	?>
+</div>
 
-		</div> <!-- .hover-effect Tất cả-->
+</div> <!-- .hover-effect Tất cả-->
 
 
-	</div> <!-- #container -->
+</div> <!-- #container -->
 </div>
 <?php include "../includes/footer.php" ?>

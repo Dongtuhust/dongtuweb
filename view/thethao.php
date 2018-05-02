@@ -1,20 +1,20 @@
 <?php include "../includes/header.php" ?>
+
+<div class="background-deep thethao">
 	
-	<div class="background-deep thethao">
-		
+</div>
+<div class = "head-title">	
+	<p>Thể thao</p>
+	<p style="font-size: 30px">Sport is life</p>
+	<div class="go">
+		<a href="#p1" title=""><button type="button" class="btn btn-light">Go</button></a>
 	</div>
-	<div class = "head-title">	
-		<p>Thể thao</p>
-		<p style="font-size: 30px">Sport is life</p>
-		<div class="go">
-			<a href="#p1" title=""><button type="button" class="btn btn-light">Go</button></a>
-		</div>
-	</div>
-	<div class="container">
-		<div class="hover-effect">
-			<h2 class="chimuc">Tựa game Sport</h2>
-			<div class="row">
-				<?php require_once("connectdb.php");
+</div>
+<div class="container">
+	<div class="hover-effect">
+		<h2 class="chimuc">Tựa game Sport</h2>
+		<div class="row">
+			<?php require_once("connectdb.php");
 			$sql = "SELECT * FROM product";
 			$result = mysqli_query($connect,$sql);
 			$totalRows = mysqli_num_rows($result);
@@ -28,31 +28,34 @@
 						?>
 						<div class="col-sm-3">
 							<div class="card">
-								<a href="#"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+								<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 								<div class="card-body">
 									<h5 class="card-title"><?=$row["product_name"]?></h5>
-									<p class="card-text"><?=$row["price_buy"]?></p>
-									<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
-									</button>
-									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-								</div>
+									<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
+									<button data-id="<?php
+									if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+									?>"
+									type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+								</button>
+								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 							</div>
 						</div>
-						<?php
-					}
+					</div>
+					<?php
 				}
-			}else{
-				?>
-				<tr valign="top">
-					<td >&nbsp;</td>
-					<td ><b><font face="Arial" color="#FF0000">
-					Khong tim thay thong tin !</font></b></td>
-				</tr>
-				<?php
 			}
+		}else{
 			?>
-			</div>
-		</div>
+			<tr valign="top">
+				<td >&nbsp;</td>
+				<td ><b><font face="Arial" color="#FF0000">
+				Khong tim thay thong tin !</font></b></td>
+			</tr>
+			<?php
+		}
+		?>
+	</div>
+</div>
 
 
 

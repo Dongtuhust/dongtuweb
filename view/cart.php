@@ -1,6 +1,6 @@
 <script src="../js/jquery-3.3.1.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="../js/cart.js"></script>
+<script src="../js/style.js"></script>
 <?php
 session_start();
 require_once("connectdb.php");
@@ -76,8 +76,8 @@ $result = mysqli_query($connect,$sql);
 				?>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary">Thanh toán</button>
-				<button type="button" class="btn btn-success reset" data-dismiss="modal">Reset</button>
+				<a href="order.php"><button type="button" class="btn btn-primary">Thanh toán</button></a>
+				<button type="button" class="btn btn-success reset" data-dismiss="modal">Refresh</button>
 			</div>
 		</div>
 	</div>

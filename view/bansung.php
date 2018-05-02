@@ -29,11 +29,14 @@
 						?>
 						<div class="col-sm-3">
 							<div class="card">
-								<a href="#"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+								<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 								<div class="card-body">
 									<h5 class="card-title"><?=$row["product_name"]?></h5>
-									<p class="card-text"><?=number_format($row["price_buy"])?></p>
-									<button type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
+									<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
+									<button data-id="<?php
+										if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+										?>"
+									type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
 									</button>
 									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 								</div>
