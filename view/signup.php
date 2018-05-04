@@ -3,7 +3,7 @@
 <div class="sign-in">
 	<div class="row">
 		<div class="col-sm-8">
-			<h1>Đăng ký</h1>
+			<h2>Đăng ký</h2>
 			<form action="signup.php" method="post">
 				<div class="form-row">
 					<div class="form-group col-md-6">

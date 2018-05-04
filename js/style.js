@@ -65,7 +65,9 @@ $(document).on('click', '.btn-buy-now', function() {
             $(document).find('.btn-buy-now').removeClass('disable');
         },1000);
     },500);
+    // cart.find('#count-item').data('count') = parseInt(cart.find('#count-item').data('count')) +1 ;
     var d = parseInt(cart.find('#count-item').data('count')) +1;
+    $("#count-item").attr("data-count",d);
     cart.find('#count-item').text(d+' Item').data('count', d);
 });
 
@@ -114,19 +116,50 @@ $(".reset").click(function(){
         }
     });
 });
-
+//sự kiện click vào chuông thông báo notification
+$(".notification").click(function(){
+    var display = $(".box-notification").css("display");
+    if (display == "none") {
+        $(".box-notification").css({
+            display : "block"
+        });
+    }else{
+        $(".box-notification").css({
+            display : "none"
+        });
+    }
+});
 //bắt sự kiện thay đổi hình thức thanh toán
 // $(".radio-ship").change(function(){
 //     $(".ship").attr("display","block");
 //     $(."credit").attr("display","none");
 // })
 $(".radio-credit").change(function(){
-    $(".ship").attr("display","none");
-    $(".credit").attr("display","block");
+    var display = $(".credit").css("display");
+    if (display == "none") {
+        $(".credit").css({
+            display : "block"
+        });
+        $(".ship").css({
+            display : "none"
+        });
+    }
 })
+$(".radio-ship").change(function(){
+    var display = $(".ship").css("display");
+    if (display == "none") {
+        $(".ship").css({
+            display : "block"
+        });
+        $(".credit").css({
+            display : "none"
+        });
+    }
+})
+//xem ảnh treong trang chi tiết sản phẩm
 $(".list-img-product").click(function(){
     var url = $(this).attr("data-img");
     $(".img-product").css({
         'backgroundImage': url
-     });
+    });
 })

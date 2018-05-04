@@ -9,8 +9,9 @@ session_start();
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/ >
-	<link href=’http://fonts.googleapis.com/css?family=Ruge+Boogie’ rel=’stylesheet’ type=’text/css’> 
+	<link href="http://fonts.googleapis.com/css?family=Ruge+Boogie" rel="stylesheet" type="text/css">
 	<script src="../js/fontawesome-all.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="../js/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -44,55 +45,85 @@ session_start();
 							<a class="dropdown-item" href="nhapvai.php">Nhập vai</a>
 							<a class="dropdown-item" href="kinhdi.php">Kinh dị</a>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="#">Something else here</a>
+							<!-- <a class="dropdown-item" href="#">Something else here</a> -->
 						</div>
 					</li>
+					<?php
+					if (isset($_SESSION['user_id']) && ($_SESSION['email'] != "admin@gmail.com")){
+						?>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Người dùng
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="myproduct.php?id=<?=$_SESSION["user_id"]?>">Sản phẩm của tôi</a>
+								<a class="dropdown-item" href="sellproduct.php?email=<?=$_SESSION["email"]?>">Đăng bán</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="acount.php">Đổi mật khẩu</a>
+							</div>
+						</li>
+						<?php
+					}
+					?>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<?php
 					if (isset($_SESSION['user_id']) && ($_SESSION['email'] != "admin@gmail.com")){
 						?>
-						<!-- <a href="#">Tài khoản: <?php echo $_SESSION['username']; ?></a>
-							<a href="logout.php">Đăng suất</a> -->
-							<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
-								<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-								<span style="margin-right: 2px;" id="count-item" data-count="<?php
-								if (isset($_SESSION['cart'])) {
-									echo count($_SESSION['cart']);
-								}else echo 0;
-								?>">
-								<?php if (isset($_SESSION['cart'])) {
-									echo count($_SESSION['cart'])." Item";
-								}
-								?>
-							</span>
-							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+						<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+							<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" >
+							</i>
 						</span>
-						<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
-						<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
+						<span style="margin-right: 2px;" id="count-item" data-count="
 						<?php
-					} else {
+						if (isset($_SESSION['cart'])) {
+							echo count($_SESSION['cart']);
+						}else echo 0;
+						?>">
+						<?php if (isset($_SESSION['cart'])) {
+							echo count($_SESSION['cart'])." Item";
+						}
 						?>
-						<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
-							<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-							<span style="margin-right: 2px;">
-								<?php if (isset($_SESSION['cart'])) {
-									echo count($_SESSION['cart'])." Item";
-								}
-								?>
-							</span>
-							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
-						</span>
-						<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
-						<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
-						<?php
-					}
-					?>
+					</span>
+					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i>
+					</span>
+				</span>
+				<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
+				<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng xuất</button></a>
+				<span style="margin-left: 10px;" class="notification"><i class="fas fa-bell bell" style="font-size: 25;"></i><i class="fas fa-circle dot" style="font-size: 10;"></i></span>
+
+				<?php
+			} else {
+				?>
+				<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
+					<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
+					<span style="margin-right: 2px;">
+						<?php if (isset($_SESSION['cart'])) {
+							echo count($_SESSION['cart'])." Item";
+						}
+						?>
+					</span>
+					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+				</span>
+				<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
+				<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
+				<?php
+			}
+			?>
 					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 					</form>
 				</div>
 			</nav>
+		</div>
+		<div class="box-notification" data-noti = "none">
+			<span>
+				<span style="font-size: 12px;">thông báo</span>
+				<span style="background-color: gray;">
+					<p style="color: orange;margin-left: 4px;">Bạn hiện không có thông báo nào cả</p>
+					<hr width="80%" align="center" />
+				</span>
+			</span>
 		</div>
 		<!-- Dialog hiển thị thông tin giỏ hàng ========================================== -->
 		<div id="result">

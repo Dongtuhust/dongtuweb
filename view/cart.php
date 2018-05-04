@@ -4,7 +4,6 @@
 <?php
 session_start();
 require_once("connectdb.php");
-
 $tongtien = 0;
 $id = $_POST["id"];
 if (!isset($_SESSION['cart'][$id])) {

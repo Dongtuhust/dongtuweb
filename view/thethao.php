@@ -1,7 +1,7 @@
 <?php include "../includes/header.php" ?>
 
 <div class="background-deep thethao">
-	
+
 </div>
 <div class = "head-title">	
 	<p>Thể thao</p>
@@ -55,6 +55,7 @@
 		}
 		?>
 	</div>
+</div>
 </div>
 
 

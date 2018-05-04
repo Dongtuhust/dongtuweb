@@ -64,6 +64,7 @@
 		</div>
 		<button class="btn btn-primary" type="submit" name="submited" style="float: right;">Thêm</button>
 	</form>
+</div>
 	<?php 
 	
 	if (isset($_POST["submited"])){

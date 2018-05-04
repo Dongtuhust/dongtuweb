@@ -100,7 +100,7 @@
 								<li >
 									<input  type="radio" class="radio-credit" name="payment_method" value="ATM" data-order_button_text="">
 									<label >Chuyển khoản </label>
-									<div  class="pay-way credit" style="display: block;">
+									<div  class="pay-way credit" style="display: none;">
 										Chuyển tiền đến tài khoản sau:
 										<br>- Số tài khoản: 123 456 789
 										<br>- Chủ TK: Nguyễn A
@@ -121,7 +121,7 @@
 
 	</div> <!-- #content -->
 </div> <!-- .container -->
-<?php 
+<?php
 if (isset($_POST['order-submit'])) {
 	$name = $_POST['name'];
 	$gender = $_POST['gender'];
@@ -147,8 +147,9 @@ if (isset($_POST['order-submit'])) {
 		echo "alert('Bạn chưa mua sản phẩm nào');";
 		echo "</script>";
 	}else{
-		$sql = "INSERT into order_customer (order_id,customer_name,customer_add,customer_phone,total_money,order_date,payment,gender,note,status) VALUES 
+		$sql = "INSERT into order_customer (order_id,customer_name,customer_add,customer_phone,total_money,order_date,payment,gender,note,status) VALUES
 		('".$order_id."','".$name."','".$address."','".$phone."','".$tongtien."','".$order_date."','".$payment."','".$gender."','".$note."','Đang chờ')";
+		echo $sql;
 		$result = mysqli_query($connect,$sql);
 		if ($result) {
 			//giảm số lượng sản phẩm trong csdl

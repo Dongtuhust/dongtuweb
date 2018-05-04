@@ -1,11 +1,14 @@
 <?php include "../includes/header.php" ?>
+<?php
+$id = $_GET["id"];
+?>
 <div class="hover-effect" style="height: 50px">
 	<h2 style="text-align: center;">Quản lý sản phẩm do người dùng đăng bán</h2>
 </div>
+<div class="sign-in">
 <table class="table table-hover">
 	<thead>
 		<tr>
-			<th scope="col">Chủ đĩa</th>
 			<th scope="col">Ảnh</th>
 			<th scope="col">Tên sản phẩm</th>
 			<th scope="col">Giá mua</th>
@@ -13,12 +16,12 @@
 			<th scope="col">Miêu tả</th>
 			<th scope="col">Thể loại</th>
 			<th scope="col">Tình trạng</th>
-			<th scope="col">Chi tiết</th>
+			<th scope="col">Thay đổi</th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php require_once("connectdb.php");
-		$sqlu = "SELECT * FROM product_user,users where product_user.user_email = users.email";
+		$sqlu = "SELECT * FROM product_user,users where product_user.user_email = users.email and user_id = '".$id."'";
 		$resultu = mysqli_query($connect,$sqlu);
 		$totalRowsu = mysqli_num_rows($resultu);
 		if($totalRowsu>0){
@@ -29,7 +32,6 @@
 				$i+=1;
 				?>
 				<tr valign="top">
-					<th scope="row" style="text-align: center;"><?=$row["username"]?></td>
 					<td><span><img style="width: 70px;height: 50px;" class="card-img-top" src="<?=$row["product_img"]?>" alt="Card image"></span></td>
 					<td><?=$row["product_name"]?></td>
 					<td ><?=$row["price_buy"]?></td>
@@ -38,7 +40,7 @@
 					<td style="text-align: center;"><?=$row["category"]?></td>
 					<td style="text-align: center;"><?=$row["status"]?></td>
 
-					<td ><button type="button" class="btn btn-light" data-toggle="modal" data-target="#product_user<?=$row["product_id"]?>" name="<?=$row["product_id"]?>">Chi tiết</button></td>
+					<td ><button type="button" class="btn btn-light" data-toggle="modal" data-target="#product_user<?=$row["product_id"]?>" name="<?=$row["product_id"]?>">Sửa</button></td>
 					<div class="modal fade" id="product_user<?=$row["product_id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
@@ -82,4 +84,5 @@
 		?>
 	</tbody>
 </table>
+</div>
 <?php include "../includes/footer.php" ?>

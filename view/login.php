@@ -3,7 +3,7 @@
 <div class="sign-in">
 	<div class="row">
 		<div class="col-sm-8">
-			<h1>Đăng nhập</h1>
+			<h2>Đăng nhập</h2>
 			<form action="login.php" method="post">
 				<div class="form-group row">
 					<label  class="col-sm-2 col-form-label">Email</label>
