@@ -1,7 +1,14 @@
-<?php include "../includes/header.php" ?>
-<div class="hover-effect" style="height: 50px">
-	<h2 style="text-align: center;">Quản lý sản phẩm do người dùng đăng bán</h2>
+<?php 
+	include "../includes/header.php"; 
+	require_once "pagination.php";
+	$recordPerPage = 5;
+?>
+<link rel="stylesheet" type="text/css" href="../css/w3s.css"/>
+
+<div id="productUserSell">
+
 </div>
+<<<<<<< HEAD
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -161,3 +168,30 @@
 	}
 	?>
 	<?php include "../includes/footer.php" ?>
+=======
+
+<script>
+	var page = 1;
+	getProductUserSell();
+
+	function getProductUserSell(){
+		$.ajax({
+			url: './data/getProductUserSell.php?page=' + page,
+			type: 'get',
+			dataType: 'text',
+			data: {},
+			success : function(result){
+				$('#productUserSell').html(result);
+			}
+		});
+	}
+
+	function changePage(src){
+		var pageNumber = src.getAttribute("page");
+		if(pageNumber != page){
+			page = pageNumber;
+			getProductUserSell();
+		}
+	}
+</script>
+>>>>>>> 26fd3b1166682dfac06a3720107c2bc11e9548cc
