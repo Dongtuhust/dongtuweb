@@ -128,7 +128,6 @@ if (isset($_POST['order-submit'])) {
 	$address = $_POST['address'];
 	$phone = $_POST['phone'];
 	$note = $_POST['note'];
-	$gender = $_POST['gender'];
 	$payment = $_POST['payment_method'];
 	date_default_timezone_set('Asia/Ho_Chi_Minh');
 	$order_date = date("Y/m/d H:i:s");

@@ -23,12 +23,6 @@
 		});
 	}
 </script>
-<div class="background-deep admin">
-
-</div>
-<div class = "head-title">
-	<p>Managenment</p>
-</div>
 <div class="container" style="display: flex;flex-direction: column;">
 	<div class="tab">
 		<button type="button" id="" class="btn btn-success" onclick="distributor()">Nhà phân phối</button>

@@ -120,7 +120,24 @@ session_start();
 			<span>
 				<span style="font-size: 12px;">thông báo</span>
 				<span style="background-color: gray;">
-					<p style="color: orange;margin-left: 4px;">Bạn hiện không có thông báo nào cả</p>
+					<?php
+					require_once("connectdb.php");
+					$sql = "Select * from product_user where notification = 'Đã bán' and user_email = '".$_SESSION['email']."'";
+					$result = mysqli_query($connect,$sql);
+					$totalRows = mysqli_num_rows($result);
+					if($totalRows>0){
+						$i=0;
+			// Sử dụng vòng lặp để duyệt kết quả truy vấn
+						while ($row = mysqli_fetch_array ($result))
+						{
+							$i+=1;
+							echo "<p style=\"color: orange;margin-left: 4px;\">Sản phẩm".$row['product_name']. " đã có người đặt hàng</p>";
+							echo "<hr width=\"80%\" align=\"center\" />";
+						}
+					}else{
+						echo "<p style=\"color: orange;margin-left: 4px;\">Bạn không có thông báo nào cả </p>";
+					}
+					?>
 					<hr width="80%" align="center" />
 				</span>
 			</span>

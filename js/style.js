@@ -16,7 +16,7 @@ $(window).scroll(function(){
     console.log(position);
 });
 
-//sự kiện click button giỏ hàng 
+//sự kiện click button giỏ hàng
 $(document).on('click', '.btn-buy-now', function() {
     //kiểm tra đăng nhập
     if ($(this).attr('data-id')==0) {
