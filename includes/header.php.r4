@@ -1,21 +1,5 @@
 <?php
-	session_start();
-	require_once "./pagination.php";
-	
-	function getAllCategory(){
-		$categories = Array();
-        $link = connectDB();
-        $sql = "select * from category"; 
-        $result = mysqli_query($link, $sql);
-        if($result != false){
-            while(($row = mysqli_fetch_array($result)) != null){
-				array_push($categories, $row);
-			}
-		}
-		return $categories;
-	}
-
-	$categories = getAllCategory();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,16 +9,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Home</title>
 	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/ >
-<<<<<<< .mine
-	<!-- <link rel="stylesheet" type="text/css" href="../css/w3s.css"/> -->
 	<link href=’http://fonts.googleapis.com/css?family=Ruge+Boogie’ rel=’stylesheet’ type=’text/css’> 
-||||||| .r4
-	<link href=’http://fonts.googleapis.com/css?family=Ruge+Boogie’ rel=’stylesheet’ type=’text/css’> 
-=======
-	<link href="http://fonts.googleapis.com/css?family=Ruge+Boogie" rel="stylesheet" type="text/css">
->>>>>>> .r6
 	<script src="../js/fontawesome-all.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="../js/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -62,94 +38,61 @@
 							Thể Loại
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-						<?php
-							for($i = 0; $i < count($categories); $i++){
-								?>
-									<a class="dropdown-item" href="category.php?category_id=<?php echo $categories[$i]["category_id"]; ?>">
-										<?php echo $categories[$i]["category_name"]; ?></a>
-								<?php
-							}
-						?>
+							<a class="dropdown-item" href="bansung.php">Bắn súng</a>
+							<a class="dropdown-item" href="thethao.php">Thể thao</a>
+							<a class="dropdown-item" href="doikhang.php">Đối kháng</a>
+							<a class="dropdown-item" href="nhapvai.php">Nhập vai</a>
+							<a class="dropdown-item" href="kinhdi.php">Kinh dị</a>
 							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Something else here</a>
 						</div>
 					</li>
-					<?php
-					if (isset($_SESSION['user_id']) && ($_SESSION['email'] != "admin@gmail.com")){
-						?>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Người dùng
-							</a>
-							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="myproduct.php?id=<?=$_SESSION["user_id"]?>">Sản phẩm của tôi</a>
-								<a class="dropdown-item" href="sellproduct.php?email=<?=$_SESSION["email"]?>">Đăng bán</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="acount.php">Đổi mật khẩu</a>
-							</div>
-						</li>
-						<?php
-					}
-					?>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<?php
 					if (isset($_SESSION['user_id']) && ($_SESSION['email'] != "admin@gmail.com")){
 						?>
-						<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
-							<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" >
-							</i>
+						<!-- <a href="#">Tài khoản: <?php echo $_SESSION['username']; ?></a>
+							<a href="logout.php">Đăng suất</a> -->
+							<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal">
+								<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
+								<span style="margin-right: 2px;" id="count-item" data-count="<?php
+								if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart']);
+								}else echo 0;
+								?>">
+								<?php if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart'])." Item";
+								}
+								?>
+							</span>
+							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
 						</span>
-						<span style="margin-right: 2px;" id="count-item" data-count="
+						<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
+						<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng suất</button></a>
 						<?php
-						if (isset($_SESSION['cart'])) {
-							echo count($_SESSION['cart']);
-						}else echo 0;
-						?>">
-						<?php if (isset($_SESSION['cart'])) {
-							echo count($_SESSION['cart'])." Item";
-						}
+					} else {
 						?>
-					</span>
-					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i>
-					</span>
-				</span>
-				<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
-				<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng xuất</button></a>
-				<span style="margin-left: 10px;" class="notification"><i class="fas fa-bell bell" style="font-size: 25;"></i><i class="fas fa-circle dot" style="font-size: 10;"></i></span>
-
-				<?php
-			} else {
-				?>
-				<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
-					<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-					<span style="margin-right: 2px;">
-						<?php if (isset($_SESSION['cart'])) {
-							echo count($_SESSION['cart'])." Item";
-						}
-						?>
-					</span>
-					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
-				</span>
-				<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
-				<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
-				<?php
-			}
-			?>
+						<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
+							<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
+							<span style="margin-right: 2px;">
+								<?php if (isset($_SESSION['cart'])) {
+									echo count($_SESSION['cart'])." Item";
+								}
+								?>
+							</span>
+							<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
+						</span>
+						<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
+						<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
+						<?php
+					}
+					?>
 					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 					</form>
 				</div>
 			</nav>
-		</div>
-		<div class="box-notification" data-noti = "none">
-			<span>
-				<span style="font-size: 12px;">thông báo</span>
-				<span style="background-color: gray;">
-					<p style="color: orange;margin-left: 4px;">Bạn hiện không có thông báo nào cả</p>
-					<hr width="80%" align="center" />
-				</span>
-			</span>
 		</div>
 		<!-- Dialog hiển thị thông tin giỏ hàng ========================================== -->
 		<div id="result">

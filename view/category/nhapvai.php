@@ -1,19 +1,16 @@
-<?php include "../includes/header.php" ?>
-
-
-<div class="background-deep kinhdi">
+<div class="background-deep nhapvai">
 	
 </div>
 <div class = "head-title">	
-	<p>Kinh dị</p>
-	<p style="font-size: 30px">Nỗi sợ hãi bao chùm</p>
+	<p>Nhập vai</p>
+	<p style="font-size: 30px">Hòa mình vào các siêu anh hùng</p>
 	<div class="go">
 		<a href="#p1" title=""><button type="button" class="btn btn-light">Go</button></a>
 	</div>
 </div>
 <div class="container">
 	<div class="hover-effect">
-		<h2 class="chimuc">Tựa game kinh dị</h2>
+		<h2 class="chimuc">Tựa game nhập vai</h2>
 		<div class="row">
 			<?php require_once("connectdb.php");
 			$sql = "SELECT * FROM product";
@@ -25,7 +22,7 @@
 				while ($row = mysqli_fetch_array ($result))
 				{
 					$i+=1;
-					if ($row["category_id"]=="5") {
+					if ($row["category_id"]=="4") {
 						?>
 						<div class="col-sm-3">
 							<div class="card">
@@ -57,11 +54,5 @@
 		?>
 	</div>
 </div>
-
-
-
 </div> <!-- .hover-effect Tất cả-->
 </div>
-
-<?php include "../includes/footer.php" ?>
-

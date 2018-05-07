@@ -16,7 +16,13 @@ $(window).scroll(function(){
     console.log(position);
 });
 
-//sự kiện click button giỏ hàng 
+//sự kiện click button giỏ hàng
+var returnStatus = "";
+
+function setReturnStatus(val){
+    returnStatus = val;
+}
+
 $(document).on('click', '.btn-buy-now', function() {
     //kiểm tra đăng nhập
     if ($(this).attr('data-id')==0) {
@@ -27,23 +33,78 @@ $(document).on('click', '.btn-buy-now', function() {
 
     //gửi ajax trả kết quả dialog giỏ hàng
     var id = $(this).attr('data-product');
+    var src = this;
+
     $.ajax({
-        url : "cart.php", // gửi ajax đến file cart.php
-        type : "post", // chọn phương thức gửi là post
+        url : "addToCart.php?id=" + id, // 
+        type : "get",
         dataType:"text", // dữ liệu trả về dạng text
-        data : {id : id
+        data : {
         },
         success : function (result){
-            // Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
-            // đó vào thẻ div có id = result
-            $('#result').html(result);
+            setReturnStatus(result);
+            if(result == "1"){
+                bubbleFlyUp(src);
+                //cap nhat cart
+                $.ajax({
+                    url : "cart.php", // gửi ajax đến file cart.php
+                    type : "post", // chọn phương thức gửi là post
+                    dataType:"text", // dữ liệu trả về dạng text
+                    data : {id : id
+                    },
+                    success : function (result){
+                        // Sau khi gửi và kết quả trả về thành công thì gán nội dung trả về
+                        // đó vào thẻ div có id = result
+                        $('#result').html(result);
+                    }
+                });
+            }else{
+                // alert("The items already has been in your cart!")
+            }
         }
     });
 
     //bắt sự kiện click giỏ hàng tạo hiệu ứng bay
-    if ($(this).hasClass('disable')) {return false;}
+    // if(returnStatus == "1"){  //them thanh cong
+    //     console.log("returnStatus: " + returnStatus);
+    //     if ($(this).hasClass('disable')) {return false;}
+    //     $(document).find('.btn-buy-now').addClass('disable');
+    //     var parent = $(this).parents('.card');
+    //     var cart = $(document).find('#cartshop');
+    //     var src = parent.find('img').attr('src');
+    //     var parTop = parent.offset().top;
+    //     var parLeft = parent.offset().left;
+    //     $('<img/>',{
+    //         class : 'img-fly',
+    //         src : src
+    //     }).appendTo('body').css({
+    //         'top': parTop,
+    //         'left': parseInt(parLeft) + parseInt(parent.width()) - 50
+    //     });
+    //     setTimeout(function(){
+    //         $(document).find('.img-fly').css({
+    //             'top': cart.offset().top,
+    //             'left': cart.offset().left
+    //         });
+    //         setTimeout(function(){
+    //             $(document).find('.img-fly').remove();
+    //             $(document).find('.btn-buy-now').removeClass('disable');
+    //         },1000);
+    //     },500);
+    //     // cart.find('#count-item').data('count') = parseInt(cart.find('#count-item').data('count')) +1 ;
+    //     var d = parseInt(cart.find('#count-item').data('count')) +1;
+    //     $("#count-item").attr("data-count",d);
+    //     cart.find('#count-item').text(d+' Item').data('count', d);
+    // }
+});
+
+//tao hieu ung bay
+function bubbleFlyUp(src){
+    if ($(src).hasClass('disable')) {
+        return false;
+    }
     $(document).find('.btn-buy-now').addClass('disable');
-    var parent = $(this).parents('.card');
+    var parent = $(src).parents('.card');
     var cart = $(document).find('#cartshop');
     var src = parent.find('img').attr('src');
     var parTop = parent.offset().top;
@@ -68,8 +129,8 @@ $(document).on('click', '.btn-buy-now', function() {
     // cart.find('#count-item').data('count') = parseInt(cart.find('#count-item').data('count')) +1 ;
     var d = parseInt(cart.find('#count-item').data('count')) +1;
     $("#count-item").attr("data-count",d);
-    cart.find('#count-item').text(d+' Item').data('count', d);
-});
+    cart.find('#count-item').text(d+' Item').data('count', d)
+}
 
 //bắt sự kiện thay đổi số lượng sản phẩm trong giỏ hàng gửi ajax cập nhập lại giỏ hàng
 $(".quantity-cart").change(function(){

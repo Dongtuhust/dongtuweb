@@ -1,19 +1,16 @@
-<?php include "../includes/header.php" ?>
+<div class="background-deep bansung">
 
-
-<div class="background-deep nhapvai">
-	
 </div>
-<div class = "head-title">	
-	<p>Nhập vai</p>
-	<p style="font-size: 30px">Hòa mình vào các siêu anh hùng</p>
+<div class = "head-title">
+	<p>Bắn súng</p>
+	<span >Một trải nghiệm góc nhìn</span>
 	<div class="go">
 		<a href="#p1" title=""><button type="button" class="btn btn-light">Go</button></a>
 	</div>
 </div>
 <div class="container">
 	<div class="hover-effect">
-		<h2 class="chimuc">Tựa game nhập vai</h2>
+		<h2 class="chimuc">Tựa game bắn súng</h2>
 		<div class="row">
 			<?php require_once("connectdb.php");
 			$sql = "SELECT * FROM product";
@@ -25,7 +22,7 @@
 				while ($row = mysqli_fetch_array ($result))
 				{
 					$i+=1;
-					if ($row["category_id"]=="4") {
+					if ($row["category_id"]=="1") {
 						?>
 						<div class="col-sm-3">
 							<div class="card">
@@ -34,33 +31,30 @@
 									<h5 class="card-title"><?=$row["product_name"]?></h5>
 									<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
 									<button data-id="<?php
-									if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
-									?>"
+										if(isset($_SESSION['user_id'])){ echo 1;}else echo 0;
+										?>"
 									type="button" class="btn btn-outline-warning btn-buy-now" data-product=<?=$row["product_id"]?>><i class="fa fa-shopping-cart"></i>
-								</button>
-								<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+									</button>
+									<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<?php
+						<?php
+					}
 				}
+			}else{
+				?>
+				<tr valign="top">
+					<td >&nbsp;</td>
+					<td ><b><font face="Arial" color="#FF0000">
+					Khong tim thay thong tin !</font></b></td>
+				</tr>
+				<?php
 			}
-		}else{
 			?>
-			<tr valign="top">
-				<td >&nbsp;</td>
-				<td ><b><font face="Arial" color="#FF0000">
-				Khong tim thay thong tin !</font></b></td>
-			</tr>
-			<?php
-		}
-		?>
-	</div>
+		</div>
+
+	</div> <!-- .hover-effect -->
 </div>
 
 
-
-</div> <!-- .hover-effect Tất cả-->
-</div>
-
-<?php include "../includes/footer.php" ?>

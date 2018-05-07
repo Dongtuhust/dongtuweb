@@ -44,6 +44,8 @@ if($totalRows>0){
 							<div class="mota">
 								<p><?=$row["description"]?></p><br>
 							</div>
+							<span class="text-detail head" >Số lượng sẵn có :</span>
+							<span class="text-detail"><?php echo $row["quantity"] - $row["purchase_number"]; ?></span><br>
 							<span class="text-detail head" style="">Lựa chọn :</span>
 							<div style="display: block;margin-top:10px; " >
 								<a href="">

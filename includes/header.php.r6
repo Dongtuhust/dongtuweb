@@ -1,21 +1,5 @@
 <?php
-	session_start();
-	require_once "./pagination.php";
-	
-	function getAllCategory(){
-		$categories = Array();
-        $link = connectDB();
-        $sql = "select * from category"; 
-        $result = mysqli_query($link, $sql);
-        if($result != false){
-            while(($row = mysqli_fetch_array($result)) != null){
-				array_push($categories, $row);
-			}
-		}
-		return $categories;
-	}
-
-	$categories = getAllCategory();
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,14 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/footer.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/ >
-<<<<<<< .mine
-	<!-- <link rel="stylesheet" type="text/css" href="../css/w3s.css"/> -->
-	<link href=’http://fonts.googleapis.com/css?family=Ruge+Boogie’ rel=’stylesheet’ type=’text/css’> 
-||||||| .r4
-	<link href=’http://fonts.googleapis.com/css?family=Ruge+Boogie’ rel=’stylesheet’ type=’text/css’> 
-=======
 	<link href="http://fonts.googleapis.com/css?family=Ruge+Boogie" rel="stylesheet" type="text/css">
->>>>>>> .r6
 	<script src="../js/fontawesome-all.js" type="text/javascript" charset="utf-8" async defer></script>
 	<script src="../js/jquery-3.3.1.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -62,16 +39,13 @@
 							Thể Loại
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-						<?php
-							for($i = 0; $i < count($categories); $i++){
-								?>
-									<a class="dropdown-item" href="category.php?category_id=<?php echo $categories[$i]["category_id"]; ?>">
-										<?php echo $categories[$i]["category_name"]; ?></a>
-								<?php
-							}
-						?>
+							<a class="dropdown-item" href="bansung.php">Bắn súng</a>
+							<a class="dropdown-item" href="thethao.php">Thể thao</a>
+							<a class="dropdown-item" href="doikhang.php">Đối kháng</a>
+							<a class="dropdown-item" href="nhapvai.php">Nhập vai</a>
+							<a class="dropdown-item" href="kinhdi.php">Kinh dị</a>
 							<div class="dropdown-divider"></div>
+							<!-- <a class="dropdown-item" href="#">Something else here</a> -->
 						</div>
 					</li>
 					<?php

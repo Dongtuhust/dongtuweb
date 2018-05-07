@@ -5,10 +5,6 @@
 session_start();
 require_once("connectdb.php");
 $tongtien = 0;
-$id = $_POST["id"];
-if (!isset($_SESSION['cart'][$id])) {
-	$_SESSION['cart'][$id] = 1;
-}
 foreach ($_SESSION['cart'] as $id => $soluong) {
 	$arr[] = "'".$id."'";
 	// unset($_SESSION['cart'][$id]);
