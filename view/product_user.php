@@ -1,9 +1,3 @@
-<?php
-	include "../includes/headeradmin.php";
-	require_once("pagination.php");
-	$recordPerPage = 10;
-?>
-
 <div class="hover-effect" style="height: 50px">
 	<h2 style="text-align: center;">Quản lý sản phẩm do người dùng đăng bán</h2>
 </div>
@@ -22,20 +16,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php
-			$sql = "SELECT * FROM product_user"; 
-			$totalProduct = executeQuery($sql);
-			$page = getPagePostMethod();
-			$products = getPageProductUserSell($totalProduct, $recordPerPage, $page);
-
-			if(count($products) > 0){
-				$i = 0;
-				// Sử dụng vòng lặp để duyệt kết quả truy vấn
-				while ($i < count($products))
-				{
-					$row = $products[$i];
-					$i+=1;
-					?>
+		<?php require_once("connectdb.php");
+		$sqlu = "SELECT * FROM product_user";
+		$resultu = mysqli_query($connect,$sqlu);
+		$totalRowsu = mysqli_num_rows($resultu);
+		if($totalRowsu>0){
+			$i=0;
+			// Sử dụng vòng lặp để duyệt kết quả truy vấn
+			while ($row = mysqli_fetch_array ($resultu))
+			{
+				$i+=1;
+				?>
 				<tr valign="top">
 					<th scope="row" style="text-align: center;"><?=$row["user_email"]?></td>
 					<td><?=$row["product_id"]?></th>
@@ -77,8 +68,8 @@
 					</div>
 
 				</tr>
-					<?php
-				}
+				<?php
+			}
 		}else{
 			?>
 			<tr valign="top">
@@ -91,4 +82,3 @@
 		?>
 	</tbody>
 </table>
-<?php echo getPaginationUnhref(count($totalProduct), $recordPerPage); ?>

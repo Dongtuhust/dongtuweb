@@ -1,9 +1,3 @@
-<?php
-	require_once("pagination.php");
-	require_once("pagination.php");
-	$recordPerPage = 10;
-?>
-
 <div class="hover-effect" style="height: 50px">
 <h2 style="text-align: center;">Quản lý sản phẩm do nhà phân phối cung cấp</h2>
 </div>
@@ -22,17 +16,16 @@
 		</tr>
 	</thead>
 	<tbody>
-		<?php
-		$totalProducts = executeQuery("SELECT * FROM product");
-		$page = getPage();
-		$products = getPageProduct($totalProducts, $recordPerPage, $page);
-		if(count($totalProducts) > 0){
-			$i = 0;
+		<?php require_once("connectdb.php");
+		$sql = "SELECT * FROM product";
+		$result = mysqli_query($connect,$sql);
+		$totalRows = mysqli_num_rows($result);
+		if($totalRows>0){
+			$i=0;
 			// Sử dụng vòng lặp để duyệt kết quả truy vấn
-			while ($i < count($products))
+			while ($row = mysqli_fetch_array ($result))
 			{
-				$row = $products[$i];
-				$i += 1;
+				$i+=1;
 				?>
 				<tr valign="top">
 					<th scope="row"><?=$row["product_id"]?></th>
@@ -95,4 +88,3 @@
 		?>
 	</tbody>
 </table>
-<?php echo getPaginationUnhref(count($totalProducts), $recordPerPage); ?>

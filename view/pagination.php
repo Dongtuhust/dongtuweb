@@ -1,17 +1,16 @@
 <?php
-
-    function connectDB(){
-        $servername = "localhost";
-        $username = "root";
-        $password = "123456";
-        $dbname = "ps4_db";
-        $connect = mysqli_connect($servername, $username, $password, $dbname);
-        mysqli_set_charset($connect, "utf8");
-        return $connect;
-    }
+    // function connectDB(){
+    //     $servername = "localhost";
+    //     $username = "root";
+    //     $password = "123456";
+    //     $dbname = "ps4_db";
+    //     $connect = mysqli_connect($servername, $username, $password, $dbname);
+    //     mysqli_set_charset($connect, "utf8");
+    //     return $connect;
+    // }
 
     function executeQuery($query){
-        $connect = connectDB();
+        require_once("connectdb.php");
         $result = mysqli_query($connect,$query);
 
         $ans = array();
@@ -83,7 +82,7 @@
 
     function getProductInfo($id){
         $row;
-        $connect = connectDB();
+        require_once("connectdb.php");
         $query = "SELECT * FROM product WHERE product_id = " .$id;
         $result = mysqli_query($connect,$query);
         if($result != false){

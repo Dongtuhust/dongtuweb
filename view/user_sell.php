@@ -1,14 +1,7 @@
-<?php 
-	include "../includes/header.php"; 
-	require_once "pagination.php";
-	$recordPerPage = 5;
-?>
-<link rel="stylesheet" type="text/css" href="../css/w3s.css"/>
-
-<div id="productUserSell">
-
+<?php include "../includes/header.php" ?>
+<div class="hover-effect" style="height: 50px">
+	<h2 style="text-align: center;">Quản lý sản phẩm do người dùng đăng bán</h2>
 </div>
-<<<<<<< HEAD
 <table class="table table-hover">
 	<thead>
 		<tr>
@@ -20,6 +13,7 @@
 			<th scope="col">Miêu tả</th>
 			<th scope="col">Thể loại</th>
 			<th scope="col">Tình trạng</th>
+			<th scope="col">Trạng thái</th>
 			<th scope="col">Chi tiết</th>
 		</tr>
 	</thead>
@@ -44,7 +38,7 @@
 						<td ><textarea class="form-control" rows="1"><?=$row["description"]?></textarea></td>
 						<td style="text-align: center;"><?=$row["category"]?></td>
 						<td style="text-align: center;"><?=$row["status"]?></td>
-
+						<td style="text-align: center;"><?=$row["notification"]?></td>
 						<td ><button type="button" class="btn btn-light" data-toggle="modal" data-target="#product_user<?=$row["product_id"]?>" name="<?=$row["product_id"]?>">Mua hàng</button></td>
 						<div class="modal fade" id="product_user<?=$row["product_id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 							<div class="modal-dialog modal-dialog-centered" role="document">
@@ -168,30 +162,3 @@
 	}
 	?>
 	<?php include "../includes/footer.php" ?>
-=======
-
-<script>
-	var page = 1;
-	getProductUserSell();
-
-	function getProductUserSell(){
-		$.ajax({
-			url: './data/getProductUserSell.php?page=' + page,
-			type: 'get',
-			dataType: 'text',
-			data: {},
-			success : function(result){
-				$('#productUserSell').html(result);
-			}
-		});
-	}
-
-	function changePage(src){
-		var pageNumber = src.getAttribute("page");
-		if(pageNumber != page){
-			page = pageNumber;
-			getProductUserSell();
-		}
-	}
-</script>
->>>>>>> 26fd3b1166682dfac06a3720107c2bc11e9548cc
