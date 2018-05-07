@@ -65,6 +65,8 @@ session_start();
 						<?php
 					}
 					?>
+
+					<span style="margin-top: 5px;margin-bottom: 7px;display: flex;"><input class="form-control" type="search" placeholder="Search" aria-label="Search"><i style="margin-top: 7px;cursor: pointer;margin-left: 5px;color: orange;font-size: 15px;" class="fas fa-search"></i></span>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<?php
