@@ -116,6 +116,7 @@
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 													<button type="submit" name="submited" class="btn btn-primary">Xác nhận giao hàng</button>
+													<button type="submit" name="submited_1" class="btn btn-waring">Hủy đơn hàng</button>
 												</div>
 											</form>
 										</div>

@@ -1,10 +1,5 @@
 <?php include "../includes/headeradmin.php" ?>
-<div class="background-deep admin">
 
-</div>
-<div class = "head-title">
-	<p>Managenment</p>
-</div>
 <div class="container" style="display: flex;flex-direction: column;">
 	<!-- Quản lý sản phẩm do nhà phân phối cung cấp =========================================-->
 	<div class="hover-effect" style="height: 50px">

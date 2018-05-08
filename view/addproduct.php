@@ -60,7 +60,7 @@
 					<label class="col-sm-4 col-form-label" style="color: orange;">Ảnh chi tiết</label>
 					<div class="col-sm-6">
 						<div class="custom-file">
-							<input type="file"  class="custom-file-input" name="imgfile_detail">
+							<input type="file"  class="custom-file-input" name="imgfile_detail[]" multiple="multiple">
 							<label class="custom-file-label">Choose file</label>
 						</div>
 					</div>
@@ -70,7 +70,7 @@
 				</fieldset>
 				<div class="form-group row">
 					<div class="col-sm-6">
-						<button type="submit" name="submited" class="btn btn-primary">Đăng bán</button>
+						<button type="submit" name="submited" class="btn btn-primary">Thêm</button>
 					</div>
 				</div>
 			</form>
@@ -126,7 +126,18 @@ if (isset($_POST["submited"])){
 		}
 
 	}
+	$dir_imgfile = substr($_FILES['imgfile']['name'],0,-4);
+	mkdir("../image/".$dir_imgfile);
+	$count = count($_FILES["imgfile_detail"]["name"]);
+	for ($i=0; $i < $count; $i++) {
+		if (isset($_FILES["imgfile_detail"]["name"][$i])){
+			move_uploaded_file($_FILES['imgfile_detail']['tmp_name'][$i], '../image/'.$dir_imgfile."/".$_FILES["imgfile_detail"]["name"][$i]);
+		}
+	}
+
 	$sqlimg = "UPDATE `product` SET `product_image`='../image/".$_FILES['imgfile']['name']."' WHERE product_name='$product_name'";
+	$resultimg = mysqli_query($connect,$sqlimg);
+	$sqlimg = "UPDATE `product` SET `detail_image`='../image/".$dir_imgfile."' WHERE product_name='$product_name'";
 	$resultimg = mysqli_query($connect,$sqlimg);
 	if ($result){
 		?>

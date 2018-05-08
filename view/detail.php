@@ -28,7 +28,7 @@ if($totalRows>0){
 		<div class="content">
 			<div class="product">
 				<div class="description">
-					<div class="img-product" style="background-image: url(<?=$row["detail_image"]."/product2.jpg"?>);">
+					<div class="img-product" style="background-image: url(<?=$row["product_image"]?>);">
 					</div>
 					<div class="text-description">
 						<div class="text-name">
@@ -66,12 +66,15 @@ if($totalRows>0){
 				</div>
 			</div>
 			<div style="display: flex;height: 70px;width: 200px;margin-left : 100px;">
-				<?php 
-				for ($i=1; $i <4 ; $i++) {
-					?>
-					<span class="list-img-product" style="background-image: url(<?php echo $row["detail_image"]."/product".$i.".jpg";?>);" data-img = "url('<?php echo $row["detail_image"]."/product".$i.".jpg";?>')">
-					</span>
-					<?php
+				<?php
+                        //thư mục cần duyệt
+				$directory = $row["detail_image"]."/";
+                      //lấy tất cả các file có phần mở rộng là jpg
+				$images = glob($directory . "*.jpg");
+                      //duyệt và show hình ảnh
+				foreach($images as $image)
+				{
+					echo "<span class='list-img-product' style='background-image: url(".$image.")' data-img = 'url(".$image.")' ></span>";
 				}
 				?>
 			</div>
