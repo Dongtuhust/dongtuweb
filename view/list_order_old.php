@@ -49,9 +49,7 @@
 						<div class="modal-dialog modal-dialog-centered" role="document">
 							<div class="modal-content">
 								<div class="modal-header">
-									<form method="post">
 										<h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn hàng 
-											<input type="text" name="order_id" value="<?=$row["order_id"]?>" readonly class="form-control"></h5>
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 												<span aria-hidden="true">&times;</span>
 											</button>
@@ -61,9 +59,9 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-											<button type="submit" name="submited_2" class="btn btn-primary">Xác nhận giao hàng</button>
+											<button type="button"  class="btn btn-primary oldorder" data-oldorder="<?=$row["order_id"]?>">Xác nhận giao hàng</button>
+											<button type="button"  class="btn btn-waring deloldorder"data-deloldorder="<?=$row["order_id"]?>">Hủy đơn hàng</button>
 										</div>
-									</form>
 								</div>
 							</div>
 						</div>

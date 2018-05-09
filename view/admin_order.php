@@ -22,6 +22,58 @@
 			}
 		});
 	}
+	$(document).on('click', '.neworder', function() {
+		var neworder = $(this).attr("data-neworder");
+		$.ajax({
+			url: 'handling-order.php',
+			type: 'post',
+			dataType: 'text',
+			data: { neworder : neworder },
+			success : function(result){
+				$("#handling-order").html(result);
+				location.reload();
+			}
+		});
+	});
+	$(document).on('click', '.delneworder', function() {
+		var delneworder = $(this).attr("data-delneworder");
+		$.ajax({
+			url: 'handling-order.php',
+			type: 'post',
+			dataType: 'text',
+			data: { delneworder : delneworder },
+			success : function(result){
+				$("#handling-order").html(result);
+				location.reload();
+			}
+		});
+	});
+	$(document).on('click', '.oldorder', function() {
+		var oldorder = $(this).attr("data-oldorder");
+		$.ajax({
+			url: 'handling-order.php',
+			type: 'post',
+			dataType: 'text',
+			data: { oldorder : oldorder },
+			success : function(result){
+				$("#handling-order").html(result);
+				location.reload();
+			}
+		});
+	});
+	$(document).on('click', '.deloldorder', function() {
+		var deloldorder = $(this).attr("data-deloldorder");
+		$.ajax({
+			url: 'handling-order.php',
+			type: 'post',
+			dataType: 'text',
+			data: { deloldorder : deloldorder },
+			success : function(result){
+				$("#handling-order").html(result);
+				location.reload();
+			}
+		});
+	});
 </script>
 <div class="container" style="display: flex;flex-direction: column;">
 	<!-- Quản lý đơn hàng  ========================================================-->
@@ -30,6 +82,9 @@
 		<button type="submit" id="" class="btn btn-primary" onclick="oldproduct()">Đĩa cũ</button>
 	</div>
 	<!-- Quản lý sản phẩm  ========================================================-->
+	<div id="handling-order">
+
+	</div>
 	<div id="order_list">
 		<div class="hover-effect" style="height: 50px">
 			<h2 style="text-align: center;">Quản lý đơn hàng</h2>
@@ -76,8 +131,7 @@
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">
 										<div class="modal-header">
-											<form method="post">
-												<h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn hàng 
+												<h5 class="modal-title" id="exampleModalLongTitle">Chi tiết đơn hàng
 													<input type="text" name="order_id" value="<?=$row["order_id"]?>" readonly class="form-control"></h5>
 													<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 														<span aria-hidden="true">&times;</span>
@@ -115,10 +169,9 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-													<button type="submit" name="submited" class="btn btn-primary">Xác nhận giao hàng</button>
-													<button type="submit" name="submited_1" class="btn btn-waring">Hủy đơn hàng</button>
+													<button type="button"  class="btn btn-primary neworder" data-neworder="<?=$row["order_id"]?>">Xác nhận giao hàng</button>
+													<button type="button" class="btn btn-waring delneworder" data-delneworder="<?=$row["order_id"]?>">Hủy đơn hàng</button>
 												</div>
-											</form>
 										</div>
 									</div>
 								</div>
@@ -141,21 +194,5 @@
 		</div>
 	</div>
 	<!-- Modal -->
-	<?php
-	if (isset($_POST["submited"])) {
-		$order_id = $_POST['order_id'];
-		$sql = "UPDATE order_customer SET status='Đã giao' where order_id= $order_id";
-		$result = mysqli_query($connect,$sql);
-	}
-	if (isset($_POST["submited_1"])) {
-		$order_id = $_POST['order_id'];
-		$sql = "UPDATE order_customer SET status='Bị hủy' where order_id= $order_id";
-		$result = mysqli_query($connect,$sql);
-	}
-	if (isset($_POST["submited_2"])) {
-		$order_id = $_POST['order_id'];
-		$sql = "UPDATE order_old_product SET status='Đã giao' where order_id= $order_id";
-		$result = mysqli_query($connect,$sql);
-	}
-	?>
+
 	<?php include "../includes/footer.php" ?>

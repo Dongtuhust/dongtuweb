@@ -22,6 +22,19 @@
 			}
 		});
 	}
+	$(document).on('click', '.delproduct', function() {
+		var iddelete = $(this).attr("data-delproduct");
+		$.ajax({
+			url: 'handling-product.php',
+			type: 'post',
+			dataType: 'text',
+			data: { iddelete : iddelete },
+			success : function(result){
+				$("#handling-product").html(result);
+				location.reload();
+			}
+		});
+	});
 </script>
 <div class="container" style="display: flex;flex-direction: column;">
 	<div class="tab">
@@ -29,6 +42,9 @@
 		<button type="submit" id="" class="btn btn-primary" onclick="user()">Người dùng</button>
 	</div>
 	<!-- Quản lý sản phẩm  ========================================================-->
+	<div id="handling-product">
+		
+	</div>
 	<div id="product_list">
 		<div class="hover-effect" style="height: 50px">
 			<h2 style="text-align: center;">Quản lý sản phẩm do nhà phân phối cung cấp</h2>
@@ -134,38 +150,6 @@ if (isset($_POST["submited"])) {
 	$distributor_name = $_POST["distributor_name"];
 	$product_status = $_POST["product_status"];
 	$sqlupdate="update product set product_name='$product_name',price_buy='$price_buy',description='$description',category_id='$category_id',quantity='$quantity',distributor_name='$distributor_name',product_status='$product_status' Where product_id='$product_id'";
-	$resultupdate = mysqli_query($connect, $sqlupdate);
-	if ($resultupdate){
-		?>
-
-		<script language="javascript">
-			alert('<?php echo "Cập nhật dữ liệu thành công. Nhấn \'OK\' để quay về trang ADMIN." ?>');
-		</script>
-
-		<?php 
-		$url="admin.php";
-		echo "<meta http-equiv='refresh' content='0;url=$url' />";
-	} else {
-		?>
-
-		<script language="javascript">
-			alert('<?php echo "Cập nhật dữ liệu thất bại." ?>');
-		</script>
-
-		<?php
-	}
-}
-if (isset($_POST["submited_2"])) {
-	$product_id = $_POST["product_id"];
-	$product_name = $_POST["product_name"];
-	$price_buy = $_POST["price_buy"];
-	$price_rent = $_POST["price_rent"];
-	$description = $_POST["description"];
-	$category_id = $_POST["category_id"];
-	$status = $_POST["status"];
-	$user_email = $_POST["user_email"];
-	$sqlupdate="update product_user set product_name='$product_name',price_buy='$price_buy',
-	price_rent='$price_rent',description='$description',category='$category',status='$status',user_email='$user_email' Where product_id='$product_id'";
 	$resultupdate = mysqli_query($connect, $sqlupdate);
 	if ($resultupdate){
 		?>
