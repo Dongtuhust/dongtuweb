@@ -15,7 +15,43 @@ $(window).scroll(function(){
     $(".background-deep").css("top",-position/7 + "px");
     console.log(position);
 });
-
+//sự kiện hover over and out vào các thẻ
+$(".new-card").hover(
+    function(){
+        var url = $(this).attr('data-imgpro');
+        var name = $(this).attr('data-name');
+        var description = $(this).attr('data-description');
+        if (description.length > 150 ) { description = description.substr(0,150); description += "..."}
+        $(".new_product").css('backgroundImage', url);
+        $(".card-view").css('backgroundImage', url);
+        $(".img-title").text(name);
+        $(".descripes").text(description);
+    },
+    function(){
+        $(".new_product").css('backgroundImage', 'url("../image/img6.jpg")');
+        $(".card-view").css('backgroundImage', 'url("../image/img6.jpg")');
+        $(".img-title").text("The Devition");
+        $(".descripes").text("Bộ phận The DivisionTM của Tom Clancy là một trải nghiệm RPG thực tế khiến cho thể loại này trở thành một thiết lập quân sự hiện đại lần đầu tiên");
+    },
+);
+$(".hot-card").hover(
+    function(){
+        var url = $(this).attr('data-imgpro');
+        var name = $(this).attr('data-name');
+        var description = $(this).attr('data-description');
+        if (description.length > 150 ) { description = description.substr(0,150); description += "..."}
+        $(".hot_product").css('backgroundImage', url);
+        $(".card-view-2").css('backgroundImage', url);
+        $(".img-title-hot").text(name);
+        $(".descripes-hot").text(description);
+    },
+    function(){
+        $(".hot_product").css('backgroundImage', 'url("../image/img5.jpg")');
+        $(".card-view-2").css('backgroundImage', 'url("../image/img5.jpg")');
+        $(".img-title-hot").text("Resident Evil 7");
+        $(".descripes-hot").text("Tiếp theo Resident Evil 5 và Resident Evil 6 , Resident Evil 7 sẽ trở lại với rễ kinh dị sống còn của franchise, với sự nhấn mạnh về thăm dò");
+    },
+);
 //sự kiện click button giỏ hàng
 $(document).on('click', '.btn-buy-now', function() {
     //kiểm tra đăng nhập

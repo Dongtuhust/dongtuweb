@@ -27,7 +27,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="card-view">
-						<div class="avatar dist-1">
+						<div class="avatar new_product">
 						</div>
 						<div class="introduction">
 							<p class="img-title">The Devition</p>
@@ -50,8 +50,8 @@
 						if ($row["product_status"]=="Mới") {
 							?>
 							<div class="col-sm-3">
-								<div class="card">
-									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
+								<div class="card new-card"  data-imgpro = 'url("<?=$row["product_image"]?>")' data-name = "<?=$row["product_name"]?>" data-description = "<?=$row["description"]?>">
+									<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>"alt="Card image cap"></a>
 									<div class="card-body">
 										<h5 class="card-title"><?=$row["product_name"]?></h5>
 										<p class="card-text"><?=number_format($row["price_buy"])?>VNĐ</p>
@@ -94,11 +94,11 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="card-view-2">
-					<div class="avatar dist-2">
+					<div class="avatar hot_product">
 					</div>
 					<div class="introduction">
-						<p class="img-title">Resident Evil 7</p>
-						<p class="descripes">Tiếp theo Resident Evil 5 và Resident Evil 6 , Resident Evil 7 sẽ trở lại với rễ kinh dị sống còn của franchise, với sự nhấn mạnh về thăm dò</p>
+						<p class="img-title-hot">Resident Evil 7</p>
+						<p class="descripes-hot">Tiếp theo Resident Evil 5 và Resident Evil 6 , Resident Evil 7 sẽ trở lại với rễ kinh dị sống còn của franchise, với sự nhấn mạnh về thăm dò</p>
 					</div>
 				</div>
 			</div>
@@ -117,7 +117,7 @@
 					if ($row["product_status"]=="Hot") {
 						?>
 						<div class="col-sm-3">
-							<div class="card">
+							<div class="card hot-card" data-imgpro = 'url("<?=$row["product_image"]?>")' data-name = "<?=$row["product_name"]?>" data-description = "<?=$row["description"]?>">
 								<a href="detail.php?id=<?=$row["product_id"]?>"><img class="card-img-top" src="<?=$row["product_image"]?>" alt="Card image cap"></a>
 								<div class="card-body">
 									<h5 class="card-title"><?=$row["product_name"]?></h5>

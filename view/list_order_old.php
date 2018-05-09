@@ -57,34 +57,7 @@
 											</button>
 										</div>
 										<div class="modal-body">
-<!-- 											<?php
-											$sql_order = "SELECT * from order_product where order_id = '".$row['order_id']."'";
-											$result_order = mysqli_query($connect,$sql_order);
-											$totaldata = mysqli_num_rows($result_order);
-											if($totaldata>0){
-												$i=0;
-			// Sử dụng vòng lặp để duyệt kết quả truy vấn
-												while ($data= mysqli_fetch_array ($result_order))
-												{
-													$i+=1;
-													?>
-													<div style="line-height: 1.5;">
-														<p>Tên sản phẩm : <span style="color: orange;"><?=$data["product_name"]?></span></p>
-														<p>Số lượng : <span style="color: orange;"><?=$data["quantity"]?></span></p>
-													</div>
-													<hr width="80%" align="center" />
-													<?php
-												}
-											}else{
-												?>
-												<tr valign="top">
-													<td >&nbsp;</td>
-													<td ><b><font face="Arial" color="#FF0000">
-													Khong tim thay thong tin đơn hàng!</font></b></td>
-												</tr>
-												<?php
-											}
-											?> -->
+
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

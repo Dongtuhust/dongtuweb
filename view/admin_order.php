@@ -146,13 +146,16 @@
 		$order_id = $_POST['order_id'];
 		$sql = "UPDATE order_customer SET status='Đã giao' where order_id= $order_id";
 		$result = mysqli_query($connect,$sql);
-		header('index.php');
+	}
+	if (isset($_POST["submited_1"])) {
+		$order_id = $_POST['order_id'];
+		$sql = "UPDATE order_customer SET status='Bị hủy' where order_id= $order_id";
+		$result = mysqli_query($connect,$sql);
 	}
 	if (isset($_POST["submited_2"])) {
 		$order_id = $_POST['order_id'];
 		$sql = "UPDATE order_old_product SET status='Đã giao' where order_id= $order_id";
 		$result = mysqli_query($connect,$sql);
-		header('index.php');
 	}
 	?>
 	<?php include "../includes/footer.php" ?>
