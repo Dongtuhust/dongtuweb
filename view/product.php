@@ -17,7 +17,11 @@
 	</thead>
 	<tbody>
 		<?php require_once("connectdb.php");
-		$sql = "SELECT * FROM product";
+		if (isset($_POST["input_search"])) {
+			$sql = "SELECT * FROM product where product_name LIKE '%".$_POST["input_search"]."%'";
+		}else{
+			$sql = "SELECT * FROM product";
+		}
 		$result = mysqli_query($connect,$sql);
 		$totalRows = mysqli_num_rows($result);
 		if($totalRows>0){

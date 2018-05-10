@@ -1,22 +1,24 @@
 <?php include "../includes/headeradmin.php" ?>
 <script>
 	function newproduct(){
+		var input_search = $(".input_search").val();
 		$.ajax({
 			url: 'list_order_new.php',
 			type: 'post',
 			dataType: 'text',
-			data: {},
+			data: {input_search : input_search},
 			success : function(result){
 				$('#order_list').html(result);
 			}
 		});
 	}
 	function oldproduct(){
+		var input_search = $(".input_search").val();
 		$.ajax({
 			url: 'list_order_old.php',
 			type: 'post',
 			dataType: 'text',
-			data: {},
+			data: {input_search : input_search},
 			success : function(result){
 				$('#order_list').html(result);
 			}
@@ -77,9 +79,18 @@
 </script>
 <div class="container" style="display: flex;flex-direction: column;">
 	<!-- Quản lý đơn hàng  ========================================================-->
-	<div class="tab">
-		<button type="button" id="" class="btn btn-success" onclick="newproduct()">Đĩa mới</button>
-		<button type="submit" id="" class="btn btn-primary" onclick="oldproduct()">Đĩa cũ</button>
+	<div class="row tab">
+		<div class="col-sm-4">
+			<button type="button" id="" class="btn btn-success" onclick="newproduct()">Đĩa mới</button>
+			<button type="submit" id="" class="btn btn-primary" onclick="oldproduct()">Đĩa cũ</button>
+		</div>
+		<div class="col-sm-4">
+	    	<span style="margin-top: 5px;margin-bottom: 7px;display: flex;">
+				<input class="form-control input_search" type="search" placeholder="Search" name="search" aria-label="Search">
+				<i style="margin-top: 7px;cursor: pointer;margin-left: 5px;color: orange;font-size: 15px;" class="fas fa-search search">
+				</i>
+			</span>
+	    </div>
 	</div>
 	<!-- Quản lý sản phẩm  ========================================================-->
 	<div id="handling-order">

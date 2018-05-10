@@ -2,7 +2,7 @@
 <?php
 $search = $_GET["search"];
 ?>
-<div class="sign-in" style="margin-bottom: 200px;">
+<div class="sign-in" style="margin-bottom: 250px;">
 	<div class="row">
 		<div class="col-sm-12">
 			<?php require_once("connectdb.php");

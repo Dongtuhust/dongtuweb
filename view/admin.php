@@ -1,22 +1,24 @@
 <?php include "../includes/headeradmin.php" ?>
 <script>
 	function distributor(){
+		var input_search = $(".input_search").val();
 		$.ajax({
 			url: 'product.php',
 			type: 'post',
 			dataType: 'text',
-			data: {},
+			data: {input_search : input_search},
 			success : function(result){
 				$('#product_list').html(result);
 			}
 		});
 	}
 	function user(){
+		var input_search = $(".input_search").val();
 		$.ajax({
 			url: 'product_user.php',
 			type: 'post',
 			dataType: 'text',
-			data: {},
+			data: {input_search : input_search},
 			success : function(result){
 				$('#product_list').html(result);
 			}
@@ -37,9 +39,18 @@
 	});
 </script>
 <div class="container" style="display: flex;flex-direction: column;">
-	<div class="tab">
-		<button type="button" id="" class="btn btn-success" onclick="distributor()">Nhà phân phối</button>
-		<button type="submit" id="" class="btn btn-primary" onclick="user()">Người dùng</button>
+	<div class="row tab">
+		<div class="col-sm-4">
+			<button type="button" id="" class="btn btn-success" onclick="distributor()">Nhà phân phối</button>
+			<button type="submit" id="" class="btn btn-primary" onclick="user()">Người dùng</button>
+	    </div>
+	    <div class="col-sm-4">
+	    	<span style="margin-top: 5px;margin-bottom: 7px;display: flex;">
+				<input class="form-control input_search" type="search" placeholder="Search" name="search" aria-label="Search">
+				<i style="margin-top: 7px;cursor: pointer;margin-left: 5px;color: orange;font-size: 15px;" class="fas fa-search search">
+				</i>
+			</span>
+	    </div>
 	</div>
 	<!-- Quản lý sản phẩm  ========================================================-->
 	<div id="handling-product">

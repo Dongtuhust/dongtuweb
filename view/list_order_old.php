@@ -21,7 +21,11 @@
 	</thead>
 	<tbody>
 		<?php require_once("connectdb.php");
-		$sql = "SELECT * FROM order_old_product";
+		if (isset($_POST["input_search"])) {
+			$sql = "SELECT * FROM order_old_product where order_id LIKE '%".$_POST["input_search"]."%'";
+		}else{
+			$sql = "SELECT * FROM order_old_product";
+		}
 		$result = mysqli_query($connect,$sql);
 		$totalRows = mysqli_num_rows($result);
 		if($totalRows>0){

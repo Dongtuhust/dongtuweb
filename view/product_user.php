@@ -18,7 +18,11 @@
 	</thead>
 	<tbody>
 		<?php require_once("connectdb.php");
-		$sqlu = "SELECT * FROM product_user";
+		if (isset($_POST["input_search"])) {
+			$sqlu = "SELECT * FROM product_user where user_email LIKE '%".$_POST["input_search"]."%'";
+		}else{
+			$sqlu = "SELECT * FROM product_user";
+		}
 		$resultu = mysqli_query($connect,$sqlu);
 		$totalRowsu = mysqli_num_rows($resultu);
 		if($totalRowsu>0){
