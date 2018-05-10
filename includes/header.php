@@ -65,8 +65,12 @@ session_start();
 						<?php
 					}
 					?>
-
-					<span style="margin-top: 5px;margin-bottom: 7px;display: flex;"><input class="form-control" type="search" placeholder="Search" aria-label="Search"><i style="margin-top: 7px;cursor: pointer;margin-left: 5px;color: orange;font-size: 15px;" class="fas fa-search"></i></span>
+					<form action="search_result.php" method="get" accept-charset="utf-8">
+						<span style="margin-top: 5px;margin-bottom: 7px;display: flex;">
+							<input class="form-control" type="search" placeholder="Search" name="search" aria-label="Search">
+							<button style="margin-top: 7px;cursor: pointer;margin-left: 5px;color: orange;font-size: 15px;" class="fas fa-search"></button>
+						</span>
+					</form>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
 					<?php
@@ -80,38 +84,38 @@ session_start();
 						<?php
 						if (isset($_SESSION['cart'])) {
 							echo count($_SESSION['cart']);
-						}else echo 0;
-						?>">
-						<?php if (isset($_SESSION['cart'])) {
-							echo count($_SESSION['cart'])." Item";
-						}
-						?>
+							}else echo 0;
+							?>">
+							<?php if (isset($_SESSION['cart'])) {
+								echo count($_SESSION['cart'])." Item";
+							}
+							?>
+						</span>
+						<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i>
+						</span>
 					</span>
-					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i>
-					</span>
-				</span>
-				<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
-				<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng xuất</button></a>
-				<span style="margin-left: 10px;" class="notification"><i class="fas fa-bell bell" style="font-size: 25;"></i><i class="fas fa-circle dot" style="font-size: 10;"></i></span>
+					<span style="margin-right: 5px;" href="#">Tài khoản: <?php echo $_SESSION['username']; ?></span>
+					<a href="logout.php"><button type="button" class="btn btn-outline-warning">Đăng xuất</button></a>
+					<span style="margin-left: 10px;" class="notification"><i class="fas fa-bell bell" style="font-size: 25;"></i><i class="fas fa-circle dot" style="font-size: 10;"></i></span>
 
-				<?php
-			} else {
-				?>
-				<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
-					<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
-					<span style="margin-right: 2px;">
-						<?php if (isset($_SESSION['cart'])) {
-							echo count($_SESSION['cart'])." Item";
-						}
-						?>
+					<?php
+				} else {
+					?>
+					<span  id="cartshop" style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" >
+						<span><i class="fas fa-shopping-cart" style="margin-right: 2px;" ></i></span>
+						<span style="margin-right: 2px;">
+							<?php if (isset($_SESSION['cart'])) {
+								echo count($_SESSION['cart'])." Item";
+							}
+							?>
+						</span>
+						<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
 					</span>
-					<span><i class="fa fa-chevron-down" style="margin-right: 20px;"></i></span>
-				</span>
-				<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
-				<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
-				<?php
-			}
-			?>
+					<a href="signup.php"><button type="button" class="btn btn-outline-dark">Đăng ký</button></a>
+					<a href="login.php"><button type="button" class="btn btn-outline-warning">Đăng nhập</button></a>
+					<?php
+				}
+				?>
 					<!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
 					</form>

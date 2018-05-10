@@ -43,7 +43,6 @@
 	</div>
 	<!-- Quản lý sản phẩm  ========================================================-->
 	<div id="handling-product">
-		
 	</div>
 	<div id="product_list">
 		<div class="hover-effect" style="height: 50px">
