@@ -1,37 +1,44 @@
+
 <?php include "../includes/header.php" ?>
-<?php require_once("connectdb.php"); ?>
+<?php require_once("connectdb.php");
+$email='';$usename='';$city='';$phone='';$error='';
+
+?>
 <div class="sign-in">
 	<div class="row">
 		<div class="col-sm-8">
+
 			<h2>Đăng ký</h2>
 			<form action="signup.php" method="post">
+			<div id="alert" class="alert alert-danger" style="display:none"></div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="inputEmail4">Email</label>
-						<input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" required="">
+						<input onkeyup="checkUser()" type="email" class="form-control" id="email" name="email" placeholder="Email" value="<?=$email?>" required>
 					</div>
 					<div class="form-group col-md-6">
 						<label for="inputAddress">Tên đăng nhập</label>
-						<input type="text" class="form-control" name="username" id="inputAddress" placeholder="username" required="">
+						<input onkeyup="checkUser()" type="text" class="form-control" name="username" id="username" placeholder="username" value="<?=$usename?>" required>
 
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPassword4">Mật khẩu</label>
-					<input type="password" class="form-control" name="password1" id="inputPassword4" placeholder="Password">
+					<input type="password" class="form-control" name="password1" id="pass1" placeholder="Password" required>
 				</div>
 				<div class="form-group">
+					<div id="alertpass" class="alert alert-danger" style="display:none"></div>
 					<label for="inputPassword4">Xác nhận mật khẩu</label>
-					<input type="password" class="form-control" name="password2" id="inputPassword4" placeholder="Password">
+					<input onkeyup="checkPass()" type="password" class="form-control" name="password2" id="pass2" placeholder="Password" required>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="inputCity">Thành phố</label>
-						<input type="text" class="form-control" name="city" id="inputCity">
+						<input type="text" class="form-control" name="city" id="inputCity" value="<?=$city?>" >
 					</div>
 					<div class="form-group col-md-2">
 						<label for="inputZip">Số điện thoại</label>
-						<input type="text" class="form-control" name="phone" id="inputZip">
+						<input type="text" class="form-control" name="phone" id="inputZip" value="<?=$phone?>" >
 					</div>
 					<div class="form-group col-md-4">
 						<label for="inputZip">Adminpass</label>
@@ -40,13 +47,13 @@
 				</div>
 				<div class="form-group">
 					<div class="form-check">
-						<input class="form-check-input" type="checkbox" id="gridCheck">
+						<input class="form-check-input" type="checkbox" id="gridCheck" checked="true" required>
 						<label class="form-check-label" for="gridCheck">
 							Chấp nhận điều khoản
 						</label>
 					</div>
 				</div>
-				<button type="submit" name="btn_submit" class="btn btn-primary">Đăng ký</button>
+				<button id="submit" type="submit" name="btn_submit" class="btn btn-primary">Đăng ký</button>
 			</form>
 		</div>
 		<div class="col-sm-4">
@@ -54,8 +61,49 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	function checkUser(){
+		var username = document.getElementById('username').value;
+		var email = document.getElementById('email').value;
+		var box = document.getElementById("alert");
+		var button = document.getElementById("submit");
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+						box.style.display = 'block';
+						box.innerHTML = this.responseText;
+						button.disabled = true;
+					}else{
+						box.style.display = 'none';
+						button.disabled = false;
+					}
+
+
+				console.log(this.status);
+		};
+		xmlhttp.open("GET", "checkuser.php?username=" + username + "&email=" + email, true);
+		xmlhttp.send();
+	}
+
+	function checkPass(){
+		var pass1 = document.getElementById('pass1').value;
+		var pass2 = document.getElementById('pass2').value;
+		var button = document.getElementById("submit");
+		var box = document.getElementById("alertpass");
+		if(pass1!==pass2){
+			box.style.display = 'block';
+			box.innerHTML = "Mật khẩu nhập lại không chính xác";
+			button.disabled = true;
+		}else{
+			box.style.display = 'none';
+			button.disabled = false;
+		}
+	}
+</script>
 <?php include "../includes/footer.php" ?>
-<?php 
+<?php
+
 if (isset($_POST["btn_submit"])) {
 		//lấy thông tin từ các form bằng phương thức POST
 	$username = $_POST["username"];
@@ -73,11 +121,13 @@ if (isset($_POST["btn_submit"])) {
 		echo '</script>';
 	}
 	else{
+
 		if ($username == "" || $password1 == "" ||$password2 == "" || $city == "" || $email == ""||$phone== "") {
 			echo '<script language="javascript">';
-			echo 'alert("bạn vui lòng nhập đầy đủ thông tin")';
+			echo 'alert("Bạn vui lòng nhập đầy đủ thông tin")';
 			echo '</script>';
 		}else{
+
 			if ($passAdmin=="") {
 				$sql = "INSERT INTO users(username, password, address, email, createdate,phone,permision) VALUES ( '$username', '$password1', '$city', '$email', now(),'$phone','0')";
 			// thực thi câu $sql với biến connect lấy từ file connection.php
@@ -102,8 +152,8 @@ if (isset($_POST["btn_submit"])) {
 				$url="login.php";
 				echo "<meta http-equiv='refresh' content='0;url=$url' />";
 			}
-
 		}
 	}
 }
+
 ?>

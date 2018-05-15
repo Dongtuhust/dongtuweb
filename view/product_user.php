@@ -13,7 +13,7 @@
 			<th scope="col">Thể loại</th>
 			<th scope="col">Tình trạng</th>
 			<th scope="col">Trạng thái</th>
-			<th scope="col">Giao hàng</th>
+			<th scope="col">Xóa sản phẩm</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -42,7 +42,7 @@
 							<td style="text-align: center;"><?=$row["category"]?></td>
 							<td style="text-align: center;"><?=$row["status"]?></td>
 							<td style="text-align: center;"><?=$row["notification"]?></td>
-							<td ><button type="button" class="btn btn-light" data-toggle="modal" data-target="#product_user<?=$row["product_id"]?>" name="<?=$row["product_id"]?>">Xác nhận</button></td>
+							<td ><button type="button" class="btn btn-light" data-toggle="modal" data-target="#product_user<?=$row["product_id"]?>" name="<?=$row["product_id"]?>">Xóa sản phẩm</button></td>
 							<div class="modal fade" id="product_user<?=$row["product_id"]?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered" role="document">
 									<div class="modal-content">

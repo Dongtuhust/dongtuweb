@@ -39,11 +39,11 @@ session_start();
 							Thể Loại
 						</a>
 						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="bansung.php">Bắn súng</a>
-							<a class="dropdown-item" href="thethao.php">Thể thao</a>
-							<a class="dropdown-item" href="doikhang.php">Đối kháng</a>
-							<a class="dropdown-item" href="nhapvai.php">Nhập vai</a>
-							<a class="dropdown-item" href="kinhdi.php">Kinh dị</a>
+							<a class="dropdown-item" href="category.php?category_id=1">Bắn súng</a>
+							<a class="dropdown-item" href="category.php?category_id=2">Thể thao</a>
+							<a class="dropdown-item" href="category.php?category_id=3">Đối kháng</a>
+							<a class="dropdown-item" href="category.php?category_id=4">Nhập vai</a>
+							<a class="dropdown-item" href="category.php?category_id=5">Kinh dị</a>
 							<div class="dropdown-divider"></div>
 							<!-- <a class="dropdown-item" href="#">Something else here</a> -->
 						</div>

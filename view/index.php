@@ -1,5 +1,4 @@
-<?php include "../includes/header.php" ?>
-
+<?php include "../includes/header.php" ;?>
 <div class="background-deep">
 </div>
 <div class = "head-title">

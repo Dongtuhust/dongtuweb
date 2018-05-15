@@ -92,7 +92,7 @@
 			alert('<?php echo "Khóa tài khoản thành công. Nhấn \'OK\' để quay về trang ADMIN." ?>');
 		</script>
 		<?php
-		$url="admin.php";
+		$url="user.php";
 		echo "<meta http-equiv='refresh' content='0;url=$url' />";
 	} else {
 		?>

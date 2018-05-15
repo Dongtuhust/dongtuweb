@@ -163,6 +163,10 @@ if (isset($_POST['order-submit'])) {
 				$newquantity = $row["quantity"] - $_SESSION['cart'][$row["product_id"]];
 				$sqlpro = "UPDATE product SET quantity = $newquantity where product_id = '".$row['product_id']."'";
 				$resultpro = mysqli_query($connect,$sqlpro);
+				//tăng số lượng mua
+				$newpurcharse = $row["purcharse_number"] + $_SESSION['cart'][$row["product_id"]];
+				$sqladd = "UPDATE product SET purcharse_number = $newpurcharse where product_id = '".$row['product_id']."'";
+				$resultadd = mysqli_query($connect,$sqladd);
 				//thêm vào bảng order_product quản lý các sản phẩm mua của khách hàng
 				$sql_order = "INSERT into order_product (order_id,product_name,username,quantity) VALUES
 				('".$order_id."','".$row["product_name"]."','".$name."','".$_SESSION['cart'][$row["product_id"]]."')";
@@ -172,6 +176,8 @@ if (isset($_POST['order-submit'])) {
 			echo "alert('Mua hàng thành công sản phẩm sẽ chuyển đến sau vài ngày');";
 			echo "</script>";
 			unset($_SESSION['cart']);
+			$url="index.php";
+			echo "<meta http-equiv='refresh' content='0;url=$url' />";
 		}else {
 			echo "<script language=\"javascript\">";
 			echo "alert('Mua hàng không thành công lỗi kết nối đến server');";
